@@ -25,22 +25,7 @@
     <script src="{{ asset('assets/js/datatables.bootstrap5.min.js') }}"></script>
 
     <script>
-        function logout() {
-            swal({
-                title: "Log out",
-                text: "Are you sure you want to log out?",
-                icon: "warning",
-                buttons: [
-                    'No, cancel it',
-                    'Yes, I am sure'
-                ],
-                dangerMode: true,
-            }).then((willLogout) => {
-                if (willLogout) {
-                    window.location.href = "{{ route('logout') }}";
-                }
-            });
-        }
+
     </script>
 
     @stack('scripts')

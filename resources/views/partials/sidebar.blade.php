@@ -2,15 +2,15 @@
     <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
         <div class="sb-sidenav-menu">
             <div class="nav">
-                {{-- <a class="nav-link {{ Route::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
+                <a class="nav-link {{ Route::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                     <div class="sb-nav-link-icon"><i class="fa fa-tachometer fa-fw"></i></div>
                     Dashboard
                 </a>
                 <div class="sb-sidenav-menu-heading">Modules</div>
-                <a class="nav-link {{ Route::is('users.*') ? 'active' : '' }}" href="{{ route('users.index') }}">
+                <a class="nav-link {{ Route::is('user.*') ? 'active' : '' }}" href="{{ route('user.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa fa-users fa-fw"></i></div>
                     Users
-                </a> --}}
+                </a>
             </div>
         </div>
     </nav>
