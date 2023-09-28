@@ -42,13 +42,17 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
+        ], [] ,[
+            'name' => 'Nama',
+            'email' => 'Email',
+            'password' => 'Kata Sandi',
         ]);
 
         // encrypt password
         $validated['password'] = bcrypt($validated['password']);
         User::create($validated);
 
-        return redirect()->route('user.index')->with('success', 'User has been created successfully!');
+        return redirect()->route('user.index')->with('success', 'Pengguna berhasil ditambahkan!');
     }
 
     /**
@@ -88,6 +92,10 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id, // ignore this email for this user
             'password' => 'nullable|min:6',
+        ], [] ,[
+            'name' => 'Nama',
+            'email' => 'Email',
+            'password' => 'Kata Sandi',
         ]);
 
         // encrypt password
@@ -100,7 +108,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->update($validated);
 
-        return redirect()->route('user.index')->with('success', "User with name {$user->name} has been updated successfully!");
+        return redirect()->route('user.index')->with('success', "Pengguna dengan nama {$user->name} berhasil diperbarui!");
     }
 
     /**
@@ -114,6 +122,6 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $name = $user->name;
         $user->delete();
-        return redirect()->route('user.index')->with('success', "User with name {$name} has been deleted successfully!");
+        return redirect()->route('user.index')->with('success', "Pengguna dengan nama {$name} berhasil dihapus!");
     }
 }

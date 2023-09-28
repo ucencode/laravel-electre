@@ -6,7 +6,7 @@
         <div class="col-lg-7">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header">
-                    <h3 class="text-center font-weight-light my-4">Create Account</h3>
+                    <h3 class="text-center font-weight-light my-4">Membuat Akun Baru</h3>
                 </div>
                 <div class="card-body">
                     @include('partials.flash')
@@ -15,8 +15,8 @@
                         <div class="row mb-3">
                             <div class="col-md-12">
                                 <div class="form-floating mb-3 mb-md-0">
-                                    <input class="form-control @error('name') is-invalid @enderror" id="inputName"  type="text" name="name" placeholder="Enter your name" value="{{ old('name') }}"/>
-                                    <label for="inputName">Name</label>
+                                    <input class="form-control @error('name') is-invalid @enderror" id="inputName" type="text" name="name" placeholder="Nama Lengkap" value="{{ old('name') }}"/>
+                                    <label for="inputName">Nama</label>
                                     @error('name')
                                     <small class="text-danger">{{ $message }}</small>
                                     @enderror
@@ -25,7 +25,7 @@
                         </div>
                         <div class="form-floating mb-3">
                             <input class="form-control @error('email') is-invalid @enderror" id="inputEmail" type="email" name="email" placeholder="name@example.com" value="{{ old('email') }}" />
-                            <label for="inputEmail">Email address</label>
+                            <label for="inputEmail">Email</label>
                             @error('email')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
@@ -34,8 +34,8 @@
                             <div class="col-md-6">
                                 <div class="form-floating mb-3 mb-md-0">
                                     <input class="form-control @error('password') is-invalid @enderror" id="inputPassword" type="password"
-                                        name="password" placeholder="Create a password" @error('password') value="{{ old('password') }}" @enderror/>
-                                    <label for="inputPassword">Password</label>
+                                        name="password" placeholder="Password baru" @error('password') value="{{ old('password') }}" @enderror/>
+                                    <label for="inputPassword">Kata Sandi</label>
                                 </div>
                             </div>
                             <div class="col-md-6">

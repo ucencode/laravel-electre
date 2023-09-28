@@ -4,12 +4,12 @@
             <div class="nav">
                 <a class="nav-link {{ Route::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
                     <div class="sb-nav-link-icon"><i class="fa fa-tachometer fa-fw"></i></div>
-                    Dashboard
+                    Dasbor
                 </a>
                 <div class="sb-sidenav-menu-heading">Modules</div>
                 <a class="nav-link {{ Route::is('user.*') ? 'active' : '' }}" href="{{ route('user.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa fa-users fa-fw"></i></div>
-                    Users
+                    Pengguna
                 </a>
             </div>
         </div>

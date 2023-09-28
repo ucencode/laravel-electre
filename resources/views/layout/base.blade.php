@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="@yield('title')" />
         <meta name="author" content="" />
-        <title>@yield('title', 'Website Title')</title>
+        <title>@yield('title', '')</title>
 
         @include('partials.stylesheets')
         @stack('styles')

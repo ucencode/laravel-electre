@@ -10,9 +10,9 @@
         <div class="card-header">
             <i class="fa fa-table me-1"></i>
             @if($is_add)
-                Add User
+                Tambah Pengguna Baru
             @else
-                Edit User
+                Ubah Pengguna
             @endif
         </div>
         <div class="card-body">
@@ -26,8 +26,8 @@
                     @endif
                         @csrf
                         <div class="mb-3">
-                            <label for="name" class="form-label">Name</label>
-                            <input type="text" value="{{ old('name', $user->name) }}" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Name">
+                            <label for="name" class="form-label">Nama Pengguna</label>
+                            <input type="text" value="{{ old('name', $user->name) }}" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Nama">
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -40,14 +40,14 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
+                            <label for="password" class="form-label">Kata Sandi</label>
                             <input type="text" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Password">
                             @error('password')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <a href="{{ route('user.index') }}" class="btn btn-outline-secondary"><i class="fa fa-arrow-left me-2"></i> Back</a>
-                        <button type="submit" class="btn btn-primary"><i class="fa fa-save me-2"></i> Save</button>
+                        <a href="{{ route('user.index') }}" class="btn btn-outline-secondary"><i class="fa fa-arrow-left me-2"></i> Kembali</a>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save me-2"></i> Simpan</button>
                     </form>
                 </div>
             </div>

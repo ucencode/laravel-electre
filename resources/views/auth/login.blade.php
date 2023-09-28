@@ -6,7 +6,7 @@
         <div class="col-lg-5">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header">
-                    <h3 class="text-center font-weight-light my-4">Login</h3>
+                    <h3 class="text-center font-weight-light my-4">Masuk</h3>
                 </div>
                 <div class="card-body">
                     @include('partials.flash')
@@ -14,14 +14,14 @@
                         @csrf
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="inputEmail" placeholder="name@example.com" value="{{ old('email') }}" />
-                            <label for="inputEmail">Email address</label>
+                            <label for="inputEmail">Email</label>
                             @error('email')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="inputPassword" placeholder="Password" />
-                            <label for="inputPassword">Password</label>
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="inputPassword" placeholder="Kata Sandi" />
+                            <label for="inputPassword">Kata Sandi</label>
                             @error('password')
                             <small class="text-danger">{{ $message }}</small>
                             @enderror
