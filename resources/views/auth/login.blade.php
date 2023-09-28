@@ -33,7 +33,7 @@
                     </form>
                 </div>
                 <div class="card-footer text-center py-3">
-                    <div class="small"><a href="{{ route('register') }}">Need an account? Sign up!</a></div>
+                    <div class="small"><a href="{{ route('register') }}">Tidak ada akun? Buat baru disini</a></div>
                 </div>
             </div>
         </div>
