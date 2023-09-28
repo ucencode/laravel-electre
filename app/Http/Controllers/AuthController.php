@@ -29,7 +29,7 @@ class AuthController extends Controller
         // Sign the user in
         Auth::login($user);
         // Redirect to dashboard
-        return redirect()->route('dashboard')->with('success', 'Your account has been created successfully!');
+        return redirect()->route('dashboard')->with('success', 'Anda berhasil mendaftar! Selamat datang di aplikasi.');
     }
 
     public function login()
@@ -50,11 +50,11 @@ class AuthController extends Controller
             $request->session()->regenerate();
 
             // Redirect to dashboard
-            return redirect()->intended(route('dashboard'))->with('success', 'Successfully logged in, Welcome back!');
+            return redirect()->intended(route('dashboard'))->with('success', 'Anda berhasil masuk! Selamat datang.');
         }
         // Redirect to the login page
         return redirect()->route('login')->withErrors([
-            'The provided credentials do not match our records.'
+            'Email atau kata sandi salah.'
         ])->onlyInput('email');
     }
 
@@ -66,6 +66,6 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('login')->with('success', 'Successfully logged out!');
+        return redirect()->route('login')->with('success', 'Anda berhasil keluar! Sampai jumpa lagi.');
     }
 }
