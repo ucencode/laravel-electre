@@ -1,10 +1,10 @@
 @extends('layout.admin')
 
-@section('title', 'User')
+@section('title', 'Pengguna')
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">User</h1>
+    <h1 class="mt-4">Pengguna</h1>
     @include('partials.flash')
     <div class="card mb-4">
         <div class="card-header">

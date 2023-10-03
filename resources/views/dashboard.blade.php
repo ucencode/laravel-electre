@@ -1,6 +1,6 @@
 @extends('layout.admin')
 
-@section('title', 'Blank')
+@section('title', 'Dashboard')
 
 @section('content')
 <div class="container-fluid px-4">
