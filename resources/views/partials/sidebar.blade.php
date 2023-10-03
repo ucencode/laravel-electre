@@ -7,6 +7,14 @@
                     Dasbor
                 </a>
                 <div class="sb-sidenav-menu-heading">Modules</div>
+                <a class="nav-link {{ Route::is('entity.*') ? 'active' : '' }}" href="{{ route('entity.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa fa-building fa-fw"></i></div>
+                    Entitas
+                </a>
+                <a class="nav-link {{ Route::is('criteria.*') ? 'active' : '' }}" href="{{ route('criteria.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa fa-list fa-fw"></i></div>
+                    Kriteria
+                </a>
                 <a class="nav-link {{ Route::is('user.*') ? 'active' : '' }}" href="{{ route('user.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa fa-users fa-fw"></i></div>
                     Pengguna
