@@ -6,10 +6,15 @@
                     <div class="sb-nav-link-icon"><i class="fa fa-tachometer fa-fw"></i></div>
                     Dasbor
                 </a>
+                {{-- nilai --}}
+                <a class="nav-link {{ Route::is('score.*') ? 'active' : '' }}" href="{{ route('score.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa fa-list-ol fa-fw"></i></div>
+                    Nilai
+                </a>
                 <div class="sb-sidenav-menu-heading">Modules</div>
-                <a class="nav-link {{ Route::is('entity.*') ? 'active' : '' }}" href="{{ route('entity.index') }}">
-                    <div class="sb-nav-link-icon"><i class="fa fa-building fa-fw"></i></div>
-                    Entitas
+                <a class="nav-link {{ Route::is('alternative.*') ? 'active' : '' }}" href="{{ route('alternative.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa fa-cubes fa-fw"></i></div>
+                    Alternatif
                 </a>
                 <a class="nav-link {{ Route::is('criteria.*') ? 'active' : '' }}" href="{{ route('criteria.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa fa-list fa-fw"></i></div>

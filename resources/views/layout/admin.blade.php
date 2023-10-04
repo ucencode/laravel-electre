@@ -18,11 +18,6 @@
         </div>
     </div>
     @include('partials.scripts')
-    {{-- Script for admin page only --}}
-    <script src="{{ asset('assets/js/sweetalert.js') }}"></script>
-    <script src="{{ asset('assets/js/jquery-3.7.0.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatables.min.js') }}"></script>
-    <script src="{{ asset('assets/js/datatables.bootstrap5.min.js') }}"></script>
 
     <script>
 

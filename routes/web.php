@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\EntityController;
+use App\Http\Controllers\AlternativeController;
 use App\Http\Controllers\CriteriaController;
+use App\Http\Controllers\ScoreController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,9 @@ Route::middleware(['auth'])->group(function () {
     // https://laravel.com/docs/8.x/controllers#actions-handled-by-resource-controller
     Route::resource('user', UserController::class)->except(['show']);
 
-    Route::resource('entity', EntityController::class)->except(['show']);
+    Route::resource('alternative', AlternativeController::class)->except(['show']);
 
     Route::resource('criteria', CriteriaController::class)->except(['show']);
+
+    Route::resource('score', ScoreController::class)->only(['index', 'create', 'store']);
 });

@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Criteria;
 use App\Models\Entity;
+use App\Models\Score;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
-class EntityController extends Controller
+class ScoreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +17,14 @@ class EntityController extends Controller
      */
     public function index()
     {
-        $entities = Entity::all();
-        return view('admin.entity.index', ['entities' => $entities]);
+        $entities = DB::table('entities', 'e')
+            ->leftJoin('scores as s', 'e.code', '=', 's.entity_code')
+            ->leftJoin('criterias as c', 'c.code', '=', 's.criteria_code')
+            ->select('s.*', 'e.name as entity_name', 'c.name as criteria_name')
+            ->orderBy('s.entity_code')
+            ->orderBy('s.criteria_code')
+            ->get();
+        return view('admin.score.index', ['entities' => $entities]);
     }
 
     /**
@@ -25,9 +34,7 @@ class EntityController extends Controller
      */
     public function create()
     {
-        $data['is_add'] = true;
-        $data['entity'] = new Entity();
-        return view('admin.entity.form', $data);
+
     }
 
     /**
@@ -38,19 +45,7 @@ class EntityController extends Controller
      */
     public function store(Request $request)
     {
-        $entity_data = $request->validate([
-            'name' => 'required',
-            'code' => 'required|regex:/^E[0-9]{3}$/|unique:entities,code',
-        ], [
-            'code.regex' => 'Format kode salah',
-        ] ,[
-            'name' => 'Nama',
-            'code' => 'Kode',
-        ]);
-
-        Entity::create($entity_data);
-
-        return redirect()->route('entity.index')->with('success', 'Entitas berhasil ditambahkan!');
+        //
     }
 
     /**
@@ -73,8 +68,8 @@ class EntityController extends Controller
     public function edit($id)
     {
         $data['is_add'] = false;
-        $data['entity'] = Entity::findOrFail($id);
-        return view('admin.entity.form', $data);
+        $data['score'] = Score::findOrFail($id);
+        return view('admin.score.form', $data);
     }
 
     /**
@@ -86,15 +81,7 @@ class EntityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $entity_data = $request->validate([
-            'name' => 'required'
-        ], [] ,[
-            'name' => 'Nama',
-        ]);
-
-        Entity::findOrFail($id)->update($entity_data);
-
-        return redirect()->route('entity.index')->with('success', 'Entitas berhasil diubah!');
+        //
     }
 
     /**
@@ -105,9 +92,6 @@ class EntityController extends Controller
      */
     public function destroy($id)
     {
-        $entity = Entity::findOrFail($id);
-        $name = $entity->name;
-        $entity->delete();
-        return redirect()->route('entity.index')->with('success', 'Berhasil menghapus ' . $name);
+
     }
 }

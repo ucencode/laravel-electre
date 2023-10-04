@@ -15,6 +15,11 @@ class Criteria extends Model
         'weight',
     ];
 
+    public function scores()
+    {
+        return $this->hasMany(Score::class, 'criteria_code', 'code');
+    }
+
     public function getGeneratedCode()
     {
         if (!$this->latest()->first()) {

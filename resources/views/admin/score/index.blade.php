@@ -16,7 +16,6 @@
             <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
-                        <th>Kode</th>
                         <th>Nama Entitas</th>
                         <th class="col-buttons"></th>
                     </tr>
@@ -24,20 +23,14 @@
                 <tbody>
                 @forelse ($entities as $entity)
                     <tr>
-                        <td>{{ $entity->code }}</td>
-                        <td>{{ $entity->name }}</td>
+                        <td>{{ "[{$entity->entitiy_code}] {$entity->name}" }}</td>
                         <td>
-                            <a href="{{ route('entity.edit', $entity->id) }}" class="btn btn-primary btn-sm" title="Edit"><i class="fa fa-edit fa-fw"></i></a>
-                            <form action="{{ route('entity.destroy', $entity->id) }}" method="POST" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                    <button class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')" title="Hapus"><i class="fa fa-trash fa-fw"></i></button>
-                            </form>
+                            <a href="{{ route('entity.edit', $entity->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="3" class="text-center">Tidak ada data.</td>
+                        <td colspan="2" class="text-center">Tidak ada data.</td>
                     </tr>
                 @endforelse
                 </tbody>
