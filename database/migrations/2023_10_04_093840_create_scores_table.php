@@ -16,8 +16,8 @@ class CreateScoresTable extends Migration
         Schema::create('scores', function (Blueprint $table) {
             $table->id();
 
-            $table->integer('criteria_code');
-            $table->integer('alternative_code');
+            $table->string('criteria_code');
+            $table->string('alternative_code');
             $table->float('value');
 
             $table->timestamps();
