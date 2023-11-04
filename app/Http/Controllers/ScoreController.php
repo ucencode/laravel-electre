@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alternative;
 use App\Models\Criteria;
 use App\Models\Entity;
 use App\Models\Score;
@@ -17,14 +18,14 @@ class ScoreController extends Controller
      */
     public function index()
     {
-        $entities = DB::table('entities', 'e')
-            ->leftJoin('scores as s', 'e.code', '=', 's.entity_code')
-            ->leftJoin('criterias as c', 'c.code', '=', 's.criteria_code')
-            ->select('s.*', 'e.name as entity_name', 'c.name as criteria_name')
-            ->orderBy('s.entity_code')
-            ->orderBy('s.criteria_code')
-            ->get();
-        return view('admin.score.index', ['entities' => $entities]);
+        $alternatives = Alternative::orderBy('code')->get();
+        $criterias = Criteria::orderBy('code')->get();
+        $data_skor = Score::all();
+        $scores = [];
+        foreach ($data_skor as $skor) {
+            $scores[$skor->alternative_code][$skor->criteria_code] = $skor->value;
+        }
+        return view('admin.score.index', ['scores' => $scores, 'alternatives' => $alternatives, 'criterias' => $criterias]);
     }
 
     /**
@@ -32,9 +33,16 @@ class ScoreController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
+        $alternative = Alternative::where('code', $request->alt_code)->first();
+        if(!$alternative)
+            abort(404);
 
+        $criterias = Criteria::orderBy('code')->get();
+        $scores = Score::where('alternative_code', $alternative->code)->pluck('value', 'criteria_code')->toArray();
+
+        return view('admin.score.form', ['alternative' => $alternative, 'criterias' => $criterias, 'scores' => $scores]);
     }
 
     /**
@@ -45,7 +53,24 @@ class ScoreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated_values = $request->validate([
+            'alternative_code' => 'required|exists:alternatives,code',
+            'criteria' => 'required|array',
+            'criteria.*' => 'required|numeric|min:0',
+        ]);
+
+        $update_values = [];
+        foreach ($validated_values['criteria'] as $criteria_code => $value) {
+            $update_values[] = [
+                'alternative_code' => $validated_values['alternative_code'],
+                'criteria_code' => $criteria_code,
+                'value' => $value
+            ];
+        }
+
+        Score::upsert($update_values, ['alternative_code', 'criteria_code'], ['value']);
+
+        return redirect()->route('score.index')->with('success', 'Data skor berhasil disimpan');
     }
 
     /**

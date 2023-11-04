@@ -1,31 +1,36 @@
 @extends('layout.admin')
 
-@section('title', 'Entitas')
+@section('title', 'Nilai Alternatif')
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Entitas</h1>
+    <h1 class="mt-4">Nilai Alternatif</h1>
     @include('partials.flash')
     <div class="card mb-4">
         <div class="card-header">
             <i class="fa fa-table me-1"></i>
-            Tabel
-            <a href="{{ route('entity.create') }}" class="btn btn-primary btn-sm float-end"><i class="fa fa-plus me-2"></i> Tambah</a>
+            Nilai alternatif setiap kriteria
         </div>
         <div class="card-body">
-            <table class="table table-striped table-bordered">
+            <table class="table table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>Nama Entitas</th>
+                        <th>Alternatif</th>
+                        @foreach($criterias as $criteria)
+                        <th title="{{ $criteria->name }}" data-bs-toggle="tooltip" data-bs-title="{{ $criteria->name }} ({{ number_format($criteria->weight, 0) }})">{{ $criteria->code }}</th>
+                        @endforeach
                         <th class="col-buttons"></th>
                     </tr>
                 </thead>
                 <tbody>
-                @forelse ($entities as $entity)
+                @forelse ($alternatives as $alternative)
                     <tr>
-                        <td>{{ "[{$entity->entitiy_code}] {$entity->name}" }}</td>
+                        <td>{{ "[{$alternative->code}] {$alternative->name}" }}</td>
+                        @foreach($criterias as $criteria)
+                        <td>{{ $scores[$alternative->code][$criteria->code] ?? 0}}</td>
+                        @endforeach
                         <td>
-                            <a href="{{ route('entity.edit', $entity->id) }}" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></a>
+                            <a href="{{ route('score.create', ['alt_code' => $alternative->code]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit fa-fw"></i></a>
                         </td>
                     </tr>
                 @empty

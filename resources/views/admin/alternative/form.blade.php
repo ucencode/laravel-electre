@@ -38,7 +38,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="name" class="form-label label-required">Nama Alternatif</label>
-                            <input type="text" value="{{ old('nama', $alternative->name) }}" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Nama">
+                            <input type="text" value="{{ old('name', $alternative->name) }}" class="form-control @error('name') is-invalid @enderror" id="name" name="name" placeholder="Nama">
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror

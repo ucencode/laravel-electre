@@ -14,7 +14,7 @@ class AlternativeController extends Controller
      */
     public function index()
     {
-        $alternatives = Alternative::all();
+        $alternatives = Alternative::orderBy('code')->get();
         return view('admin.alternative.index', ['alternatives' => $alternatives]);
     }
 
