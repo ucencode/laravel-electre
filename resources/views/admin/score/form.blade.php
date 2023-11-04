@@ -22,7 +22,7 @@
                         @foreach($criterias as $criteria)
                         <div class="mb-3">
                             <label for="criteria_{{ $criteria->code }}" class="form-label">{{  "[{$criteria->code}] {$criteria->name}" }}</label>
-                            <input type="number" name="criteria[{{ $criteria->code }}]" class="form-control @error('criteria.' . $criteria->code) is-invalid @enderror" id="criteria_{{ $criteria->code }}" value="{{ old('criteria.' . $criteria->code, $scores[$alternative->code][$criteria->code] ?? 0) }}" min="0" required>
+                            <input type="text" name="criteria[{{ $criteria->code }}]" class="form-control input-score @error('criteria.' . $criteria->code) is-invalid @enderror" id="criteria_{{ $criteria->code }}" value="{{ str_replace('.', ',', old('criteria.' . $criteria->code, $scores[$criteria->code] ?? 0)) }}" min="0" required>
                             @error('criteria.' . $criteria->code)
                             <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -37,3 +37,34 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Allow only number but comma as decimal separator
+        const inputScores = document.querySelectorAll('.input-score');
+
+        inputScores.forEach(function (inputScore) {
+            // when focused on the input, select all content
+            inputScore.addEventListener('focus', function (e) {
+                const isRound = /^\d*$/.test(e.target.value);
+                if (!isRound) {
+                    e.target.select();
+                }
+            });
+
+            inputScore.addEventListener("input", function (e) {
+                // When user type dot, replace it with comma
+                e.target.value = e.target.value.replace(/\./g, ',');
+
+                // Validate the input, using a regex
+                const isValid = /^\d*,?\d*$/.test(e.target.value);
+                if(!isValid)  {
+                    e.target.value = e.target.value.substring(0, e.target.value.length - 1);
+                    return false;
+                }
+            });
+        });
+    });
+</script>
+@endpush

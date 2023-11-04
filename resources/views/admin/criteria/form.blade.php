@@ -46,7 +46,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="weight" class="form-label">Bobot</label>
-                            <input type="number" value="{{ old('weight', $criteria->weight) ?? 0 }}" class="form-control @error('weight') is-invalid @enderror" id="weight" name="weight" min="0" placeholder="Bobot">
+                            <input type="text" value="{{ str_replace('.', ',', old('weight', $criteria->weight)) ?? 0 }}" class="form-control @error('weight') is-invalid @enderror" id="weight" name="weight" min="0" placeholder="Bobot">
                             @error('weight')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -61,3 +61,33 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Allow only number but comma as decimal separator
+        const inputWeight = document.getElementById('weight');
+
+        // when focused on the input, select all content
+        inputWeight.addEventListener('focus', function (e) {
+            const isRound = /^\d*$/.test(e.target.value);
+            if (!isRound) {
+                e.target.select();
+            }
+        });
+
+        inputWeight.addEventListener("input", function (e) {
+            // When user type dot, replace it with comma
+            e.target.value = e.target.value.replace(/\./g, ',');
+
+            // Validate the input, using a regex
+            const isValid = /^\d*,?\d*$/.test(e.target.value);
+            if(!isValid)  {
+                e.target.value = e.target.value.substring(0, e.target.value.length - 1);
+                return false;
+            }
+        });
+    });
+</script>
+@endpush

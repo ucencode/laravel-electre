@@ -38,10 +38,15 @@ class CriteriaController extends Controller
      */
     public function store(Request $request)
     {
+        // detect request weight, replace comma with dot
+        if($request->has('weight'))
+            $request->merge(['weight' => str_replace(',', '.', $request->weight)]);
+
+        // validate request
         $criteria_data = $request->validate([
             'code' => 'required|regex:/^C[0-9]{3}$/|unique:criterias,code',
             'name' => 'required',
-            'weight' => 'required|numeric|min:0',
+            'weight' => 'required|numeric|min:0|max:5',
         ], [
             'code.regex' => 'Format kode salah',
         ], [
@@ -90,9 +95,13 @@ class CriteriaController extends Controller
     public function update(Request $request, $id)
     {
         Criteria::findOrFail($id);
+
+        if($request->has('weight'))
+            $request->merge(['weight' => str_replace(',', '.', $request->weight)]);
+
         $criteria_data = $request->validate([
             'name' => 'required',
-            'weight' => 'required|numeric|min:0',
+            'weight' => 'required|numeric|min:0|max:5',
         ], [], [
             'name' => 'Nama',
             'weight' => 'Bobot',

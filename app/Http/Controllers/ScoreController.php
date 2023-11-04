@@ -53,10 +53,23 @@ class ScoreController extends Controller
      */
     public function store(Request $request)
     {
+        if ($request->has('criteria') && is_array($request->criteria)) {
+            // replace comma with dot
+            $arr_criteria = [];
+            foreach ($request->criteria as $criteria_code => $value) {
+                $arr_criteria[$criteria_code] = str_replace(',', '.', $value);
+            }
+            $request->merge(['criteria' => $arr_criteria]);
+        }
+
         $validated_values = $request->validate([
             'alternative_code' => 'required|exists:alternatives,code',
             'criteria' => 'required|array',
             'criteria.*' => 'required|numeric|min:0',
+        ], [], [
+            'alternative_code' => 'Alternatif',
+            'criteria' => 'Skor',
+            'criteria.*' => 'Skor',
         ]);
 
         $update_values = [];

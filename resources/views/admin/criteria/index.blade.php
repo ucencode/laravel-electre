@@ -27,7 +27,7 @@
                     <tr>
                         <td>{{ $criteria->code }}</td>
                         <td>{{ $criteria->name }}</td>
-                        <td>{{ $criteria->weight }}</td>
+                        <td>{{ str_replace('.', ',', $criteria->weight) }}</td>
                         <td>
                             <a href="{{ route('criteria.edit', $criteria->id) }}" class="btn btn-primary btn-sm" title="Edit"><i class="fa fa-edit fa-fw"></i></a>
                             <form action="{{ route('criteria.destroy', $criteria->id) }}" method="POST" class="d-inline">
