@@ -17,7 +17,7 @@
                     <tr>
                         <th>Alternatif</th>
                         @foreach($criterias as $criteria)
-                        <th title="{{ $criteria->name }}" data-bs-toggle="tooltip" data-bs-title="{{ $criteria->name }} ({{ number_format($criteria->weight, 2, ',') }})">{{ $criteria->code }}</th>
+                        <th title="{{ $criteria->name }}" data-bs-toggle="tooltip" data-bs-title="{{ $criteria->name }} ({{ str_replace('.', ',', $criteria->weight) }})">{{ $criteria->code }}</th>
                         @endforeach
                         <th class="col-buttons"></th>
                     </tr>
