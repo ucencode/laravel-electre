@@ -58,7 +58,7 @@
                 e.target.value = e.target.value.replace(/\./g, ',');
 
                 // Validate the input, using a regex
-                const isValid = /^\d*,?\d*$/.test(e.target.value);
+                const isValid = /^\d*,?([0-9]{1,2})?$/.test(e.target.value);
                 if(!isValid)  {
                     e.target.value = e.target.value.substring(0, e.target.value.length - 1);
                     return false;

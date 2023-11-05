@@ -27,7 +27,13 @@
                     <tr>
                         <td>{{ "[{$alternative->code}] {$alternative->name}" }}</td>
                         @foreach($criterias as $criteria)
-                        <td>{{ str_replace('.', ',', $scores[$alternative->code][$criteria->code]) ?? 0}}</td>
+                        <td>
+                            @if (isset($scores[$alternative->code][$criteria->code]))
+                                {{ str_replace('.', ',', $scores[$alternative->code][$criteria->code]) }}
+                            @else
+                                0
+                            @endif
+                        </td>
                         @endforeach
                         <td>
                             <a href="{{ route('score.create', ['alt_code' => $alternative->code]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit fa-fw"></i></a>

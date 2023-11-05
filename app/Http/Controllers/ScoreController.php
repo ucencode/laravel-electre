@@ -65,7 +65,7 @@ class ScoreController extends Controller
         $validated_values = $request->validate([
             'alternative_code' => 'required|exists:alternatives,code',
             'criteria' => 'required|array',
-            'criteria.*' => 'required|numeric|min:0',
+            'criteria.*' => 'required|numeric|min:0|max:5',
         ], [], [
             'alternative_code' => 'Alternatif',
             'criteria' => 'Skor',
