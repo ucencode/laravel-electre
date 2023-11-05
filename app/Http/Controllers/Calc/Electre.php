@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 
 class Electre extends Controller
 {
-    public $data;
-	public $bobot;
+    private $data;
+	private $bobot;
 
 	public $kriteria;
 	public $x_jarak;
@@ -49,50 +49,105 @@ class Electre extends Controller
 		// 	print_r($this);die;
 		// }
 	}
-	function total(){
-		foreach($this->agregate as $key => $val){
-			$this->total[$key] = array_sum($val);
-		}
-	}
-	function agregate(){
-		foreach($this->md_concordance as $key => $val){
-			foreach($val as $k => $v){
-				$this->agregate[$key][$k] = $v * $this->md_discordance[$key][$k];
-			}
-		}
-	}
-	function md_discordance(){
-		foreach($this->m_discordance as $key => $val){
-			foreach($val as $k => $v){
-				$this->md_discordance[$key][$k] = $v >= $this->t_discordance ? 1 : 0;
-			}
-		}
-	}
-	function md_concordance(){
-		foreach($this->m_concordance as $key => $val){
-			foreach($val as $k => $v){
-				$this->md_concordance[$key][$k] = $v >= $this->t_concordance ? 1 : 0;
-			}
-		}
-	}
+
     /**
-     * Calculate the treshold data.
+     * Calculate the Euclidean distance for each criteria.
      *
      * @return void
      */
-	function treshold($matriks){
-		$pembilang = 0;
-		$count = count($matriks);
-		foreach($matriks as $key => $val){
-			foreach($val as $k => $v){
-				if($key!=$k){
-					$pembilang+=$v;
+    function x_jarak(){
+		$arr = array();
+		foreach($this->data as $criterias){
+			foreach($criterias as $crit_code => $score){
+				$arr[$crit_code] += ($score * $score);
+			}
+		}
+		foreach($arr as $crit_code => $score2){
+			$this->kriteria[$crit_code] = $crit_code;
+			$this->x_jarak[$crit_code] = sqrt($score2);
+		}
+	}
+
+    /**
+     * Calculate the normalized data by dividing the data with the Euclidean distance.
+     *
+     * @return void
+     */
+    function normal(){
+		foreach($this->data as $alt => $criterias){
+			foreach($criterias as $crit_code => $score){
+				$this->normal[$alt][$crit_code] = $score / $this->x_jarak[$crit_code];
+			}
+		}
+	}
+
+    /**
+     * Calculate the weighted data by multiplying the normalized data with the weight.
+     *
+     * @return void
+     */
+    function terbobot(){
+		foreach($this->normal as $alt => $criterias){
+			foreach($criterias as $crit_code => $score){
+				$this->terbobot[$alt][$crit_code] = $score * $this->bobot[$crit_code];
+			}
+		}
+	}
+
+    /**
+     * Calculate the concordance data by comparing the normalized weighted data.
+     *
+     * @return void
+     */
+    function concordance(){
+		foreach($this->normal as $alt => $criterias){
+			foreach($this->normal as $_alt => $_criterias){
+				$this->concordance[$alt][$_alt] = array();
+                // Compare the weighted data
+				foreach($this->kriteria as $crit_code){
+					if($criterias[$crit_code] >= $_criterias[$crit_code])
+						$this->concordance[$alt][$_alt][] = $crit_code;
 				}
 			}
 		}
-		return $pembilang / ($count * ($count - 1));
 	}
-	function m_discordance(){
+
+    /**
+     * Calculate the discordance data by comparing the normalized weighted data.
+     *
+     * @return void
+     */
+	function discordance(){
+		foreach($this->normal as $alt => $criterias){
+            foreach($this->normal as $_alt => $_criterias){
+                $this->discordance[$alt][$_alt] = array();
+                // Compare the weighted data
+                foreach($this->kriteria as $crit_code){
+                    if($criterias[$crit_code] < $_criterias[$crit_code])
+                        $this->discordance[$alt][$_alt][] = $crit_code;
+                }
+            }
+        }
+	}
+
+    /**
+     * Calculate the concordance data.
+     *
+     * @return void
+     */
+	function m_concordance(){
+		foreach($this->concordance as $alt => $alt_compares){
+			foreach($alt_compares as $compared_alt => $concordanced_list){
+				$this->m_concordance[$alt][$compared_alt] = 0;
+
+				foreach($concordanced_list as $criteria_code){
+					$this->m_concordance[$alt][$compared_alt]+=$this->bobot[$criteria_code];
+				}
+			}
+		}
+	}
+
+    function m_discordance(){
 		$arr = array();
 		$arr2 = array();
 		foreach($this->terbobot as $key => $val){
@@ -115,92 +170,48 @@ class Electre extends Controller
 			}
 		}
 	}
-    /**
-     * Calculate the concordance data.
-     *
-     * @return void
-     */
-	function m_concordance(){
-		foreach($this->concordance as $key => $val){
+
+    function treshold($matriks){
+		$pembilang = 0;
+		$count = count($matriks);
+		foreach($matriks as $key => $val){
 			foreach($val as $k => $v){
-				$this->m_concordance[$key][$k] = 0;
-				foreach($v as $a => $b){
-					$this->m_concordance[$key][$k]+=$this->bobot[$b];
+				if($key!=$k){
+					$pembilang+=$v;
 				}
 			}
 		}
+		return $pembilang / ($count * ($count - 1));
 	}
-    /**
-     * Calculate the discordance data.
-     *
-     * @return void
-     */
-	function discordance(){
-		foreach($this->normal as $key => $val){
-			foreach($this->normal as $k => $v){
-				$this->discordance[$key][$k] = array();
-				foreach($this->kriteria as $a => $b){
-					if($val[$a] < $v[$a])
-						$this->discordance[$key][$k][] = $a;
-				}
-			}
-		}
-	}
-    /**
-     * Calculate the concordance data.
-     *
-     * @return void
-     */
-	function concordance(){
-		foreach($this->normal as $key => $val){
-			foreach($this->normal as $k => $v){
-				$this->concordance[$key][$k] = array();
-				foreach($this->kriteria as $a => $b){
-					if($val[$a] >= $v[$a])
-						$this->concordance[$key][$k][] = $a;
-				}
-			}
-		}
-	}
-    /**
-     * Calculate the weighted data.
-     *
-     * @return void
-     */
-	function terbobot(){
-		foreach($this->normal as $key => $val){
+
+    function md_concordance(){
+		foreach($this->m_concordance as $key => $val){
 			foreach($val as $k => $v){
-				$this->terbobot[$key][$k] = $v * $this->bobot[$k];
+				$this->md_concordance[$key][$k] = $v >= $this->t_concordance ? 1 : 0;
 			}
 		}
 	}
-    /**
-     * Normalize the data.
-     *
-     * @return void
-     */
-	function normal(){
-		foreach($this->data as $key => $val){
+
+    function md_discordance(){
+		foreach($this->m_discordance as $key => $val){
 			foreach($val as $k => $v){
-				$this->normal[$key][$k] = $v / $this->x_jarak[$k];
+				$this->md_discordance[$key][$k] = $v >= $this->t_discordance ? 1 : 0;
 			}
 		}
 	}
-    /**
-     * Calculate the Euclidean distance for each criteria.
-     *
-     * @return void
-     */
-	function x_jarak(){
-		$arr = array();
-		foreach($this->data as $key => $val){
+
+    function agregate(){
+		foreach($this->md_concordance as $key => $val){
 			foreach($val as $k => $v){
-				$arr[$k]+=$v * $v;
+				$this->agregate[$key][$k] = $v * $this->md_discordance[$key][$k];
 			}
 		}
-		foreach($arr as $key => $val){
-			$this->kriteria[$key] = $key;
-			$this->x_jarak[$key] = sqrt($val);
+	}
+
+	function total(){
+		foreach($this->agregate as $key => $val){
+			$this->total[$key] = array_sum($val);
 		}
 	}
+
 }
