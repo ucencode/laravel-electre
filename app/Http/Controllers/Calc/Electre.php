@@ -7,211 +7,238 @@ use App\Http\Controllers\Controller;
 class Electre extends Controller
 {
     private $data;
-	private $bobot;
+    private $weights;
 
-	public $kriteria;
-	public $x_jarak;
-	public $normal;
-	public $terbobot;
-	public $concordance;
-	public $discordance;
-	public $m_concordance;
-	public $m_discordance;
-	public $t_concordance;
-	public $t_discordance;
-	public $md_concordance;
-	public $md_discordance;
-	public $agregate;
-	public $total;
+    public $criteria;
+    public $euclideanDistances;
+    public $normalizedMatrix;
+    public $weightedMatrix;
+    public $concordanceMatrix;
+    public $discordanceMatrix;
+    public $mConcordanceMatrix;
+    public $mDiscordanceMatrix;
+    public $tConcordance;
+    public $tDiscordance;
+    public $mdConcordanceMatrix;
+    public $mdDiscordanceMatrix;
+    public $aggregatedMatrix;
+    public $total;
 
-	function __construct($data, $bobot){
-		// $debug = true;
-		// if($debug)
-		// 	echo "<pre>";
-		$this->data = $data;
-		$this->bobot = $bobot;
+    function __construct($data, $weights){
+        $this->data = $data;
+        $this->weights = $weights;
 
-		$this->x_jarak();
-		$this->normal();
-		$this->terbobot();
-		$this->concordance();
-		$this->discordance();
-		$this->m_concordance();
-		$this->m_discordance();
+        $this->calculateEuclideanDistances();
+        $this->normalizeMatrix();
+        $this->calculateWeightedMatrix();
+        $this->calculateConcordanceMatrix();
+        $this->calculateDiscordanceMatrix();
+        $this->calculateMConcordanceMatrix();
+        $this->calculateMDiscordanceMatrix();
 
-		$this->t_concordance = $this->treshold($this->m_concordance);
-		$this->t_discordance = $this->treshold($this->m_discordance);
-		$this->md_concordance();
-		$this->md_discordance();
-		$this->agregate();
-		$this->total();
-		// if($debug) {
-		// 	print_r($this);die;
-		// }
-	}
+        $this->tConcordance = $this->calculateThreshold($this->mConcordanceMatrix);
+        $this->tDiscordance = $this->calculateThreshold($this->mDiscordanceMatrix);
+
+        $this->calculateMDConcordanceMatrix();
+        $this->calculateMDDiscordanceMatrix();
+        $this->calculateAggregatedMatrix();
+        $this->calculateTotal();
+    }
 
     /**
-     * Calculate the Euclidean distance for each criteria.
+     * Calculate the Euclidean distance for each criteria in the data.
      *
      * @return void
      */
-    function x_jarak(){
-		$arr = array();
-		foreach($this->data as $criterias){
-			foreach($criterias as $crit_code => $score){
-				$arr[$crit_code] += ($score * $score);
-			}
-		}
-		foreach($arr as $crit_code => $score2){
-			$this->kriteria[$crit_code] = $crit_code;
-			$this->x_jarak[$crit_code] = sqrt($score2);
-		}
-	}
+    function calculateEuclideanDistances(){
+        $arr = array();
+        foreach($this->data as $alternatives){
+            foreach($alternatives as $criteriaCode => $score){
+                $arr[$criteriaCode] += ($score * $score);
+            }
+        }
+        foreach($arr as $criteriaCode => $score2){
+            $this->criteria[$criteriaCode] = $criteriaCode;
+            $this->euclideanDistances[$criteriaCode] = sqrt($score2);
+        }
+    }
 
     /**
-     * Calculate the normalized data by dividing the data with the Euclidean distance.
+     * Calculate the normalized matrix based on the data and distance matrix.
      *
      * @return void
      */
-    function normal(){
-		foreach($this->data as $alt => $criterias){
-			foreach($criterias as $crit_code => $score){
-				$this->normal[$alt][$crit_code] = $score / $this->x_jarak[$crit_code];
-			}
-		}
-	}
+    function normalizeMatrix(){
+        foreach($this->data as $alternative => $criteria){
+            foreach($criteria as $criteriaCode => $score){
+                $this->normalizedMatrix[$alternative][$criteriaCode] = $score / $this->euclideanDistances[$criteriaCode];
+            }
+        }
+    }
 
     /**
-     * Calculate the weighted data by multiplying the normalized data with the weight.
+     * Calculate the weighted score for each alternative and criteria.
      *
      * @return void
      */
-    function terbobot(){
-		foreach($this->normal as $alt => $criterias){
-			foreach($criterias as $crit_code => $score){
-				$this->terbobot[$alt][$crit_code] = $score * $this->bobot[$crit_code];
-			}
-		}
-	}
+    function calculateWeightedMatrix(){
+        foreach($this->normalizedMatrix as $alternative => $criteria){
+            foreach($criteria as $criteriaCode => $score){
+                $this->weightedMatrix[$alternative][$criteriaCode] = $score * $this->weights[$criteriaCode];
+            }
+        }
+    }
 
     /**
-     * Calculate the concordance data by comparing the normalized weighted data.
+     * Calculate concordance index for each alternative
      *
      * @return void
      */
-    function concordance(){
-		foreach($this->normal as $alt => $criterias){
-			foreach($this->normal as $_alt => $_criterias){
-				$this->concordance[$alt][$_alt] = array();
+    function calculateConcordanceMatrix(){
+        foreach($this->normalizedMatrix as $alternative => $criteria){
+            foreach($this->normalizedMatrix as $_alternative => $_criteria){
+                $this->concordanceMatrix[$alternative][$_alternative] = array();
                 // Compare the weighted data
-				foreach($this->kriteria as $crit_code){
-					if($criterias[$crit_code] >= $_criterias[$crit_code])
-						$this->concordance[$alt][$_alt][] = $crit_code;
-				}
-			}
-		}
-	}
-
-    /**
-     * Calculate the discordance data by comparing the normalized weighted data.
-     *
-     * @return void
-     */
-	function discordance(){
-		foreach($this->normal as $alt => $criterias){
-            foreach($this->normal as $_alt => $_criterias){
-                $this->discordance[$alt][$_alt] = array();
-                // Compare the weighted data
-                foreach($this->kriteria as $crit_code){
-                    if($criterias[$crit_code] < $_criterias[$crit_code])
-                        $this->discordance[$alt][$_alt][] = $crit_code;
+                foreach($this->criteria as $criteriaCode){
+                    if($criteria[$criteriaCode] >= $_criteria[$criteriaCode])
+                        $this->concordanceMatrix[$alternative][$_alternative][] = $criteriaCode;
                 }
             }
         }
-	}
+    }
 
     /**
-     * Calculate the concordance data.
+     * Calculate discordance matrix based on the weighted data of alternatives and criteria.
      *
      * @return void
      */
-	function m_concordance(){
-		foreach($this->concordance as $alt => $alt_compares){
-			foreach($alt_compares as $compared_alt => $concordanced_list){
-				$this->m_concordance[$alt][$compared_alt] = 0;
+    function calculateDiscordanceMatrix(){
+        foreach($this->normalizedMatrix as $alternative => $criteria){
+            foreach($this->normalizedMatrix as $_alternative => $_criteria){
+                $this->discordanceMatrix[$alternative][$_alternative] = array();
+                // Compare the weighted data
+                foreach($this->criteria as $criteriaCode){
+                    if($criteria[$criteriaCode] < $_criteria[$criteriaCode])
+                        $this->discordanceMatrix[$alternative][$_alternative][] = $criteriaCode;
+                }
+            }
+        }
+    }
 
-				foreach($concordanced_list as $criteria_code){
-					$this->m_concordance[$alt][$compared_alt]+=$this->bobot[$criteria_code];
-				}
-			}
-		}
-	}
+    /**
+     * Calculate the concordance matrix based on the comparison matrix and criteria weights.
+     *
+     * @return void
+     */
+    function calculateMConcordanceMatrix(){
+        foreach($this->concordanceMatrix as $alternative => $comparedAlternatives){
+            foreach($comparedAlternatives as $comparedAlternative => $concordanceList){
+                $this->mConcordanceMatrix[$alternative][$comparedAlternative] = 0;
 
-    function m_discordance(){
-		$arr = array();
-		$arr2 = array();
-		foreach($this->terbobot as $key => $val){
-			foreach($this->terbobot as $k => $v){
-				$arr[$key][$k] = array();
-				$arr2[$key][$k] = array();
-				foreach($this->kriteria as $a => $b){
-					$selisih = abs($val[$a] - $v[$a]);
+                foreach($concordanceList as $criteriaCode){
+                    $this->mConcordanceMatrix[$alternative][$comparedAlternative] += $this->weights[$criteriaCode];
+                }
+            }
+        }
+    }
 
-					if($val[$a] < $v[$a])
-						$arr[$key][$k][] = $selisih;
+    /**
+     * Calculate the discordance matrix for the Electre method.
+     *
+     * @return void
+     */
+    function calculateMDiscordanceMatrix(){
+        $arr = array();
+        $arr2 = array();
+        foreach($this->weightedMatrix as $alternative => $criteria){
+            foreach($this->weightedMatrix as $_alternative => $_criteria){
+                $arr[$alternative][$_alternative] = array();
+                $arr2[$alternative][$_alternative] = array();
+                foreach($this->criteria as $a => $b){
+                    $selisih = abs($criteria[$a] - $_criteria[$a]);
 
-					$arr2[$key][$k][] = $selisih;
-				}
-			}
-		}
-		foreach($arr as $key => $val){
-			foreach($val as $k => $v){
-				$this->m_discordance[$key][$k] = !$v ? 0 : max($v) / max($arr2[$key][$k]);
-			}
-		}
-	}
+                    if($criteria[$a] < $_criteria[$a])
+                        $arr[$alternative][$_alternative][] = $selisih;
 
-    function treshold($matriks){
-		$pembilang = 0;
-		$count = count($matriks);
-		foreach($matriks as $key => $val){
-			foreach($val as $k => $v){
-				if($key!=$k){
-					$pembilang+=$v;
-				}
-			}
-		}
-		return $pembilang / ($count * ($count - 1));
-	}
+                    $arr2[$alternative][$_alternative][] = $selisih;
+                }
+            }
+        }
+        foreach($arr as $alternative => $comparedAlternative){
+            foreach($comparedAlternative as $key => $selisih){
+                $this->mDiscordanceMatrix[$alternative][$key] = !$selisih ? 0 : max($selisih) / max($arr2[$alternative][$key]);
+            }
+        }
+    }
 
-    function md_concordance(){
-		foreach($this->m_concordance as $key => $val){
-			foreach($val as $k => $v){
-				$this->md_concordance[$key][$k] = $v >= $this->t_concordance ? 1 : 0;
-			}
-		}
-	}
+    /**
+     * Calculate the threshold value of a given matrix.
+     *
+     * @param array $matrix The matrix to calculate the threshold value for.
+     *
+     * @return float The threshold value of the matrix.
+     */
+    function calculateThreshold($matrix){
+        $pembilang = 0;
+        $count = count($matrix);
+        foreach($matrix as $key => $val){
+            foreach($val as $k => $v){
+                if($key!=$k){
+                    $pembilang+=$v;
+                }
+            }
+        }
+        return $pembilang / ($count * ($count - 1));
+    }
 
-    function md_discordance(){
-		foreach($this->m_discordance as $key => $val){
-			foreach($val as $k => $v){
-				$this->md_discordance[$key][$k] = $v >= $this->t_discordance ? 1 : 0;
-			}
-		}
-	}
+    /**
+     * Calculate the dominant concordance data.
+     *
+     * @return void
+     */
+    function calculateMDConcordanceMatrix(){
+        foreach($this->mConcordanceMatrix as $alternative => $comparedAlternatives){
+            foreach($comparedAlternatives as $alternativeCode => $score){
+                $this->mdConcordanceMatrix[$alternative][$alternativeCode] = $score >= $this->tConcordance ? 1 : 0;
+            }
+        }
+    }
 
-    function agregate(){
-		foreach($this->md_concordance as $key => $val){
-			foreach($val as $k => $v){
-				$this->agregate[$key][$k] = $v * $this->md_discordance[$key][$k];
-			}
-		}
-	}
+    /**
+     * Calculate the dominant discordance data.
+     *
+     * @return void
+     */
+    function calculateMDDiscordanceMatrix(){
+        foreach($this->mDiscordanceMatrix as $alternative => $comparedAlternatives){
+            foreach($comparedAlternatives as $alternativeCode => $score){
+                $this->mdDiscordanceMatrix[$alternative][$alternativeCode] = $score >= $this->tDiscordance ? 1 : 0;
+            }
+        }
+    }
 
-	function total(){
-		foreach($this->agregate as $key => $val){
-			$this->total[$key] = array_sum($val);
-		}
-	}
+    /**
+     * Calculates the aggregate values for each alternative and criterion pair
+     *
+     * @return void
+     */
+    function calculateAggregatedMatrix(){
+        foreach($this->mdConcordanceMatrix as $key => $val){
+            foreach($val as $k => $v){
+                $this->aggregatedMatrix[$key][$k] = $v * $this->mdDiscordanceMatrix[$key][$k];
+            }
+        }
+    }
+
+    /**
+     * Calculates the total for each key in the $aggregatedMatrix array and stores the result in the $total array.
+     *
+     * @return void
+     */
+    function calculateTotal(){
+        foreach($this->aggregatedMatrix as $key => $val){
+            $this->total[$key] = array_sum($val);
+        }
+    }
 
 }
