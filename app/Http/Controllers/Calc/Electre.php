@@ -230,7 +230,7 @@ class Electre extends Controller
         }
     }
 
-    /**
+    /** 
      * Calculates the total for each key in the $aggregatedMatrix array and stores the result in the $total array.
      *
      * @return void
