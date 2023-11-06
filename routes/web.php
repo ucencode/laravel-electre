@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlternativeController;
 use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\ScoreController;
+use App\Http\Controllers\ResultController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('criteria', CriteriaController::class)->except(['show']);
 
     Route::resource('score', ScoreController::class)->only(['index', 'create', 'store']);
+
+    Route::get('result', [ResultController::class, 'index'])->name('result.index');
 });

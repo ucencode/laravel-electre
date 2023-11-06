@@ -6,11 +6,6 @@
                     <div class="sb-nav-link-icon"><i class="fa fa-tachometer fa-fw"></i></div>
                     Dasbor
                 </a>
-                {{-- nilai --}}
-                <a class="nav-link {{ Route::is('score.*') ? 'active' : '' }}" href="{{ route('score.index') }}">
-                    <div class="sb-nav-link-icon"><i class="fa fa-list-ol fa-fw"></i></div>
-                    Nilai
-                </a>
                 <div class="sb-sidenav-menu-heading">Modules</div>
                 <a class="nav-link {{ Route::is('alternative.*') ? 'active' : '' }}" href="{{ route('alternative.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa fa-cubes fa-fw"></i></div>
@@ -19,6 +14,14 @@
                 <a class="nav-link {{ Route::is('criteria.*') ? 'active' : '' }}" href="{{ route('criteria.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa fa-list fa-fw"></i></div>
                     Kriteria
+                </a>
+                <a class="nav-link {{ Route::is('score.*') ? 'active' : '' }}" href="{{ route('score.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa fa-table fa-fw"></i></div>
+                    Nilai
+                </a>
+                <a class="nav-link {{ Route::is('result.*') ? 'active' : '' }}" href="{{ route('result.index') }}">
+                    <div class="sb-nav-link-icon"><i class="fa fa-bar-chart fa-fw"></i></div>
+                    Hasil
                 </a>
                 <a class="nav-link {{ Route::is('user.*') ? 'active' : '' }}" href="{{ route('user.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa fa-users fa-fw"></i></div>

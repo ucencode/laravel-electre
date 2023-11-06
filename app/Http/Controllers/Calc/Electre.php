@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 
 class Electre extends Controller
 {
-    private $data;
-    private $weights;
+    public $data;
+    public $weights;
 
     public $criteria;
     public $euclideanDistances;
@@ -24,7 +24,7 @@ class Electre extends Controller
     public $aggregatedMatrix;
     public $total;
 
-    function __construct($data, $weights){
+    function __construct($data, $weights, $debug = false){
         $this->data = $data;
         $this->weights = $weights;
 
@@ -43,6 +43,11 @@ class Electre extends Controller
         $this->calculateMDDiscordanceMatrix();
         $this->calculateAggregatedMatrix();
         $this->calculateTotal();
+
+        if($debug) {
+            echo "<pre>";
+            print_r($this);die;
+        }
     }
 
     /**
@@ -54,7 +59,10 @@ class Electre extends Controller
         $arr = array();
         foreach($this->data as $alternatives){
             foreach($alternatives as $criteriaCode => $score){
-                $arr[$criteriaCode] += ($score * $score);
+                if(!isset($arr[$criteriaCode]))
+                    $arr[$criteriaCode] = ($score * $score);
+                else
+                    $arr[$criteriaCode] += ($score * $score);
             }
         }
         foreach($arr as $criteriaCode => $score2){
