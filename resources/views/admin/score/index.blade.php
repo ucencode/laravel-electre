@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container-fluid px-4">
-    <h1 class="mt-4">Nilai Alternatif</h1>
+    <h1 class="mt-4 mb-3">Nilai Alternatif</h1>
     @include('partials.flash')
     <div class="card mb-4">
         <div class="card-header">
