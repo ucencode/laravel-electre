@@ -88,12 +88,30 @@
             </h2>
             <div id="resultMatriksV" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the
-                    collapse plugin adds the appropriate classes that we use to style each element. These classes
-                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
-                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-                    overflow.
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                @foreach($electre->criteria as $key => $val)
+                                <th>
+                                    {{ $criteria[$key] }}
+                                </th>
+                                @endforeach
+                            </tr>
+                        </thead>
+                        @foreach($electre->weightedMatrix as $key => $val)
+                        <tr>
+                            <td>
+                                {{ $alternative[$key] }}
+                            </td>
+                            @foreach($val as $k => $v)
+                            <td>
+                                {{ round($v, 4) }}
+                            </td>
+                            @endforeach
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>
@@ -106,12 +124,30 @@
             </h2>
             <div id="resultConcordance" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <strong>This is the fourth item's accordion body.</strong> It is hidden by default, until the
-                    collapse plugin adds the appropriate classes that we use to style each element. These classes
-                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
-                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-                    overflow.
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                @foreach($electre->concordanceMatrix as $key => $val)
+                                <th>
+                                    {{ $alternative[$key] }}
+                                </th>
+                                @endforeach
+                            </tr>
+                        </thead>
+                        @foreach($electre->concordanceMatrix as $key => $val)
+                        <tr>
+                            <td>
+                                {{ $alternative[$key] }}
+                            </td>
+                            @foreach($val as $k => $v)
+                            <td>
+                                {{ $key==$k ? '-' : implode(', ', $v) }}
+                            </td>
+                            @endforeach
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>
@@ -124,12 +160,30 @@
             </h2>
             <div id="resultDiscordance" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <strong>This is the fifth item's accordion body.</strong> It is hidden by default, until the
-                    collapse plugin adds the appropriate classes that we use to style each element. These classes
-                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
-                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-                    overflow.
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                @foreach($electre->discordanceMatrix as $key => $val)
+                                <th>
+                                    {{ $alternative[$key] }}
+                                </th>
+                                @endforeach
+                            </tr>
+                        </thead>
+                        @foreach($electre->discordanceMatrix as $key => $val)
+                        <tr>
+                            <td>
+                                {{ $alternative[$key] }}
+                            </td>
+                            @foreach($val as $k => $v)
+                            <td>
+                                {{ $key==$k ? '-' : implode(', ', $v) }}
+                            </td>
+                            @endforeach
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>
@@ -142,12 +196,30 @@
             </h2>
             <div id="resultMatriksConcordance" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <strong>This is the sixth item's accordion body.</strong> It is hidden by default, until the
-                    collapse plugin adds the appropriate classes that we use to style each element. These classes
-                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
-                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-                    overflow.
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                @foreach($electre->mConcordanceMatrix as $key => $val)
+                                <th>
+                                    {{ $alternative[$key] }}
+                                </th>
+                                @endforeach
+                            </tr>
+                        </thead>
+                        @foreach($electre->mConcordanceMatrix as $key => $val)
+                        <tr>
+                            <td>
+                                {{ $alternative[$key] }}
+                            </td>
+                            @foreach($val as $k => $v)
+                            <td>
+                                {{ $key==$k ? '-' : $v }}
+                            </td>
+                            @endforeach
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>
@@ -160,12 +232,30 @@
             </h2>
             <div id="resultMatriksDiscordance" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <strong>This is the seventh item's accordion body.</strong> It is hidden by default, until the
-                    collapse plugin adds the appropriate classes that we use to style each element. These classes
-                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
-                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-                    overflow.
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                @foreach($electre->mDiscordanceMatrix as $key => $val)
+                                <th>
+                                    {{ $alternative[$key] }}
+                                </th>
+                                @endforeach
+                            </tr>
+                        </thead>
+                        @foreach($electre->mDiscordanceMatrix as $key => $val)
+                        <tr>
+                            <td>
+                                {{ $alternative[$key] }}
+                            </td>
+                            @foreach($val as $k => $v)
+                            <td>
+                                {{ $key==$k ? '-' : round($v, 4) }}
+                            </td>
+                            @endforeach
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>
@@ -178,12 +268,30 @@
             </h2>
             <div id="resultMatriksDominanConcordance" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <strong>This is the eighth item's accordion body.</strong> It is hidden by default, until the
-                    collapse plugin adds the appropriate classes that we use to style each element. These classes
-                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
-                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-                    overflow.
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                @foreach($electre->mdConcordanceMatrix as $key => $val)
+                                <th>
+                                    {{ $alternative[$key] }}
+                                </th>
+                                @endforeach
+                            </tr>
+                        </thead>
+                        @foreach($electre->mdConcordanceMatrix as $key => $val)
+                        <tr>
+                            <td>
+                                {{ $alternative[$key] }}
+                            </td>
+                            @foreach($val as $k => $v)
+                            <td>
+                                {{ $key==$k ? '-' : $v }}
+                            </td>
+                            @endforeach
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>
@@ -196,12 +304,30 @@
             </h2>
             <div id="resultMatriksDominanDiscordance" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <strong>This is the ninth item's accordion body.</strong> It is hidden by default, until the
-                    collapse plugin adds the appropriate classes that we use to style each element. These classes
-                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
-                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-                    overflow.
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                @foreach($electre->mdDiscordanceMatrix as $key => $val)
+                                <th>
+                                    {{ $alternative[$key] }}
+                                </th>
+                                @endforeach
+                            </tr>
+                        </thead>
+                        @foreach($electre->mdDiscordanceMatrix as $key => $val)
+                        <tr>
+                            <td>
+                                {{ $alternative[$key] }}
+                            </td>
+                            @foreach($val as $k => $v)
+                            <td>
+                                {{ $key==$k ? '-' : round($v, 4) }}
+                            </td>
+                            @endforeach
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>
@@ -214,12 +340,34 @@
             </h2>
             <div id="resultMatriksE" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <strong>This is the tenth item's accordion body.</strong> It is hidden by default, until the
-                    collapse plugin adds the appropriate classes that we use to style each element. These classes
-                    control the overall appearance, as well as the showing and hiding via CSS transitions. You can
-                    modify any of this with custom CSS or overriding our default variables. It's also worth noting that
-                    just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit
-                    overflow.
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                @foreach($electre->aggregatedMatrix as $key => $val)
+                                <th>
+                                    {{ $alternative[$key] }}
+                                </th>
+                                @endforeach
+                                <th>Total</th>
+                                <th>Rank</th>
+                            </tr>
+                        </thead>
+                        @foreach($electre->aggregatedMatrix as $key => $val)
+                        <tr>
+                            <td>
+                                {{ $alternative[$key] }}
+                            </td>
+                            @foreach($val as $k => $v)
+                            <td>
+                                {{ $key==$k ? '-' : round($v, 4) }}
+                            </td>
+                            @endforeach
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        @endforeach
+                    </table>
                 </div>
             </div>
         </div>
