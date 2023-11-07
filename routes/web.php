@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AlternativeController;
 use App\Http\Controllers\CriteriaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\ResultController;
 
@@ -25,9 +26,7 @@ Route::get('/welcome', function () {
 });
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
     // https://laravel.com/docs/8.x/controllers#actions-handled-by-resource-controller
     Route::resource('user', UserController::class)->except(['show']);

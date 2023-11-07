@@ -23,6 +23,7 @@ class Electre extends Controller
     public $mdDiscordanceMatrix;
     public $aggregatedMatrix;
     public $total;
+    public $rank;
 
     function __construct($data, $weights, $debug = false){
         $this->data = $data;
@@ -43,6 +44,7 @@ class Electre extends Controller
         $this->calculateMDDiscordanceMatrix();
         $this->calculateAggregatedMatrix();
         $this->calculateTotal();
+        $this->get_rank();
 
         if($debug) {
             echo "<pre>";
@@ -247,6 +249,23 @@ class Electre extends Controller
         foreach($this->aggregatedMatrix as $key => $val){
             $this->total[$key] = array_sum($val);
         }
+    }
+
+
+    /**
+     * Calculates the rank of the aggregated matrix and sets it to the class property.
+     *
+     * @return void
+     */
+    function get_rank(){
+        $data = $this->aggregatedMatrix;
+        arsort($data);
+        $no=1;
+        $new = array();
+        foreach($data as $key => $value){
+            $new[$key] = $no++;
+        }
+        $this->rank = $new;
     }
 
 }

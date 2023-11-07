@@ -353,18 +353,18 @@
                                 <th>Rank</th>
                             </tr>
                         </thead>
-                        @foreach($electre->aggregatedMatrix as $key => $val)
+                        @foreach($electre->rank as $key => $val)
                         <tr>
                             <td>
                                 {{ $alternative[$key] }}
                             </td>
-                            @foreach($val as $k => $v)
+                            @foreach($electre->aggregatedMatrix[$key] as $k => $v)
                             <td>
                                 {{ $key==$k ? '-' : round($v, 4) }}
                             </td>
                             @endforeach
-                            <td></td>
-                            <td></td>
+                            <td>{{ $electre->total[$key] }}</td>
+                            <td>{{ $val }}</td>
                         </tr>
                         @endforeach
                     </table>
