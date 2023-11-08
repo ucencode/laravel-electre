@@ -5,119 +5,57 @@
 @section('content')
 <div class="container-fluid px-4">
     <h1 class="mt-4 mb-3">Dashboard</h1>
-    <ol class="breadcrumb mb-4">
-        <li class="breadcrumb-item active">Dashboard</li>
-    </ol>
     @include('partials.flash')
-    <div class="row">
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-primary text-white mb-4">
-                <div class="card-body">Primary Card</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">View Details</a>
-                    <div class="small text-white"><i class="fa fa-angle-right"></i></div>
+    <div class="page-content">
+        <section class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4>Sistem Pendukung Keputusan Pemilihan Prioritas Pengembangan Layanan Pada Perusahaan Pitcar Service Menggunakan Metode ELECTRE (Elimination and Choice Translation Realite)</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <p class="card-text">
+                            Metode ELECTRE merupakan salah satu metode analisis untuk pengambilan keputusan menggunakan multikriteria,
+                            berasal dari Eropa pada tahun 1960-an. ELECTRE sendiri merupakan singkatan dari Elinination Et Choix
+                            Traduisant la Realité, yang dalam bahasa Inggris berarti Elimination and Choice Expressing Reality. Metode ELECTRE
+                            memungkinkan untuk menentukan apakah suatu alternatif mendominasi
+                            alternatif lain dengan membandingkan setiap kriteria secara individual.
+                            Suatu alternatif dapat dikatakan mendominasi alternatif lain, jika
+                            memiliki nilai yang lebih dari alternatif lain. Dengan mengunakan
+                            metode perankingan ini, diharapkan penilaian terhadap layanan bengkel
+                            mobil dapat dilakukan dengan lebih akurat. Melalui metode ELECTRE,
+                            penilaian dapat didasarkan pada perbandingan langsung antara
+                            alternatif-alternatif layanan, dengan mempertimbangkan kriteria yang
+                            telah ditetapkan. Hal ini memungkinkan untuk menghasilkan hasil
+                            perankingan yang objektif dan membantu bengkel mobil dalam
+                            menentukan dan memilih layanan yang menjadi prioritas berdasarkan
+                            penilaian multi-kriteria. Dengan demikian, bengkel mobil dapat
+                            memaksimalkan potensi bisnis dengan meningkatkan kepuasan
+                            pelanggan, dan memperkuat posisi mereka dalam pasar otomotif yang
+                            kompetitif.
+                            </p>
+                            <hr>
+                            <p class="card-text">
+                                Langkah Penyelesaian Metode Electre adalah sebagai berikut:
+                            </p>
+                            <ol type="1">
+                                <li>Penentuan matriks keputusan</li>
+                                <li>Normalisasi matriks Keputusan (R)</li>
+                                <li>Matriks preferensi (V)</li>
+                                <li>Menentukan Concordance Index (Ckl)</li>
+                                <li>Menentukan Disccordance Index (Dkl)</li>
+                                <li>Membentuk matriks Concordance (C)</li>
+                                <li>Membentuk matriks Discordance (D)</li>
+                                <li>Membentuk matriks dominan Concordance (F)</li>
+                                <li>Membentuk matriks dominan Concordance (G)</li>
+                                <li>Membentuk matriks dominan Agregasi (E)</li>
+                            </ol>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-warning text-white mb-4">
-                <div class="card-body">Warning Card</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">View Details</a>
-                    <div class="small text-white"><i class="fa fa-angle-right"></i></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-success text-white mb-4">
-                <div class="card-body">Success Card</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">View Details</a>
-                    <div class="small text-white"><i class="fa fa-angle-right"></i></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-xl-3 col-md-6">
-            <div class="card bg-danger text-white mb-4">
-                <div class="card-body">Danger Card</div>
-                <div class="card-footer d-flex align-items-center justify-content-between">
-                    <a class="small text-white stretched-link" href="#">View Details</a>
-                    <div class="small text-white"><i class="fa fa-angle-right"></i></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="card mb-4">
-        <div class="card-header">
-            <i class="fa fa-table me-1"></i>
-            Table Example
-        </div>
-        <div class="card-body">
-            <table id="datatablesSimple" class="table table-striped table-bordered">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    <tr>
-                        <td>Tiger Nixon</td>
-                        <td>System Architect</td>
-                        <td>Edinburgh</td>
-                        <td>61</td>
-                        <td>2011/04/25</td>
-                        <td>$320,800</td>
-                    </tr>
-                    <tr>
-                        <td>Garrett Winters</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>63</td>
-                        <td>2011/07/25</td>
-                        <td>$170,750</td>
-                    </tr>
-                    <tr>
-                        <td>Ashton Cox</td>
-                        <td>Junior Technical Author</td>
-                        <td>San Francisco</td>
-                        <td>66</td>
-                        <td>2009/01/12</td>
-                        <td>$86,000</td>
-                    </tr>
-                    <tr>
-                        <td>Cedric Kelly</td>
-                        <td>Senior Javascript Developer</td>
-                        <td>Edinburgh</td>
-                        <td>22</td>
-                        <td>2012/03/29</td>
-                        <td>$433,060</td>
-                    </tr>
-                    <tr>
-                        <td>Airi Satou</td>
-                        <td>Accountant</td>
-                        <td>Tokyo</td>
-                        <td>33</td>
-                        <td>2008/11/28</td>
-                        <td>$162,700</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        </section>
     </div>
 </div>
 @endsection

@@ -8,8 +8,8 @@
     @include('partials.flash')
     <div class="card mb-4">
         <div class="card-header">
-            <i class="fa fa-table me-1"></i>
-            Nilai alternatif setiap kriteria
+            <i class="fa fa-hand-o-right me-1"></i>
+            Pengisian nilai alternatif pada setiap kriteria yang telah ditetapkan.
         </div>
         <div class="card-body">
             <table class="table table-bordered table-hover">

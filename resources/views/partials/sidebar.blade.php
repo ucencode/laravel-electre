@@ -3,16 +3,16 @@
         <div class="sb-sidenav-menu">
             <div class="nav">
                 <a class="nav-link {{ Route::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
-                    <div class="sb-nav-link-icon"><i class="fa fa-tachometer fa-fw"></i></div>
-                    Dasbor
+                    <div class="sb-nav-link-icon"><i class="fa fa-th-large fa-fw"></i></div>
+                    Dashboard
                 </a>
                 <div class="sb-sidenav-menu-heading">Modules</div>
                 <a class="nav-link {{ Route::is('alternative.*') ? 'active' : '' }}" href="{{ route('alternative.index') }}">
-                    <div class="sb-nav-link-icon"><i class="fa fa-cubes fa-fw"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fa fa-random fa-fw"></i></div>
                     Alternatif
                 </a>
                 <a class="nav-link {{ Route::is('criteria.*') ? 'active' : '' }}" href="{{ route('criteria.index') }}">
-                    <div class="sb-nav-link-icon"><i class="fa fa-list fa-fw"></i></div>
+                    <div class="sb-nav-link-icon"><i class="fa fa-list-ul fa-fw"></i></div>
                     Kriteria
                 </a>
                 <a class="nav-link {{ Route::is('score.*') ? 'active' : '' }}" href="{{ route('score.index') }}">

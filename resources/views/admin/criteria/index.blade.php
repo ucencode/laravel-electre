@@ -8,8 +8,8 @@
     @include('partials.flash')
     <div class="card mb-4">
         <div class="card-header">
-            <i class="fa fa-table me-1"></i>
-            Tabel
+            <i class="fa fa-hand-o-right me-1"></i>
+            Kriteria adalah standar atau faktor yang digunakan untuk mengevaluasi dan membandingkan alternatif.
             <a href="{{ route('criteria.create') }}" class="btn btn-primary btn-sm float-end"><i class="fa fa-plus me-2"></i> Tambah</a>
         </div>
         <div class="card-body">
