@@ -11,24 +11,27 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Sistem Pendukung Keputusan Pemilihan Prioritas Pengembangan Layanan Pada Perusahaan Pitcar Service Menggunakan Metode ELECTRE (Elimination and Choice Translation Realite)</h4>
+                        <h5>Sistem Pendukung Keputusan Pemilihan Prioritas Pengembangan Layanan Pada Perusahaan Pitcar Service Menggunakan Metode ELECTRE (Elimination and Choice Translation Realite)</h5>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
-                            <p class="card-text">
-                            Metode ELECTRE merupakan salah satu metode analisis untuk pengambilan keputusan menggunakan multikriteria,
-                            berasal dari Eropa pada tahun 1960-an. ELECTRE sendiri merupakan singkatan dari Elinination Et Choix
+                            <p class="card-text text-justify">
+                            Metode ELECTRE merupakan salah satu metode analisis untuk pengambilan keputusan menggunakan multi-kriteria,
+                            berasal dari Eropa pada tahun 1960-an. ELECTRE sendiri merupakan singkatan dari Elimination Et Choix
                             Traduisant la Realité, yang dalam bahasa Inggris berarti Elimination and Choice Expressing Reality. Metode ELECTRE
                             memungkinkan untuk menentukan apakah suatu alternatif mendominasi
                             alternatif lain dengan membandingkan setiap kriteria secara individual.
                             Suatu alternatif dapat dikatakan mendominasi alternatif lain, jika
                             memiliki nilai yang lebih dari alternatif lain. Dengan mengunakan
-                            metode perankingan ini, diharapkan penilaian terhadap layanan bengkel
-                            mobil dapat dilakukan dengan lebih akurat. Melalui metode ELECTRE,
+                            metode pemeringkatan ini, diharapkan penilaian terhadap layanan bengkel
+                            mobil dapat dilakukan dengan lebih akurat.
+                            </p>
+                            <p class="card-text text-justify">
+                            Melalui metode ELECTRE,
                             penilaian dapat didasarkan pada perbandingan langsung antara
                             alternatif-alternatif layanan, dengan mempertimbangkan kriteria yang
                             telah ditetapkan. Hal ini memungkinkan untuk menghasilkan hasil
-                            perankingan yang objektif dan membantu bengkel mobil dalam
+                            pemeringkatan yang objektif dan membantu bengkel mobil dalam
                             menentukan dan memilih layanan yang menjadi prioritas berdasarkan
                             penilaian multi-kriteria. Dengan demikian, bengkel mobil dapat
                             memaksimalkan potensi bisnis dengan meningkatkan kepuasan

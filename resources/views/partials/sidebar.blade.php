@@ -6,7 +6,7 @@
                     <div class="sb-nav-link-icon"><i class="fa fa-th-large fa-fw"></i></div>
                     Dashboard
                 </a>
-                <div class="sb-sidenav-menu-heading">Modules</div>
+                <div class="sb-sidenav-menu-heading">Menu</div>
                 <a class="nav-link {{ Route::is('alternative.*') ? 'active' : '' }}" href="{{ route('alternative.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa fa-random fa-fw"></i></div>
                     Alternatif
