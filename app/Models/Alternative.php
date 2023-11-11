@@ -22,7 +22,7 @@ class Alternative extends Model
     public function getGeneratedCode()
     {
         if (!$this->latest()->first()) {
-            // jika belum ada data, maka set code menjadi E001
+            // jika belum ada data, maka set code menjadi A001
             $code = 'A001';
         } else {
             // ambil latest code, lalu tambahkan 1

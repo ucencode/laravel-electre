@@ -18,6 +18,7 @@
                     <tr>
                         <th>Nama</th>
                         <th>Email</th>
+                        <th>Role</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -26,6 +27,7 @@
                     <tr>
                         <td>{{ $user->name }} @if($user->isCurrentlyLoggedIn()) <span class="badge text-bg-primary">You</span> @endif</td>
                         <td>{{ $user->email }}</td>
+                        <td>{{ $user->role }}</td>
                         <td>
                             <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary btn-sm" title="test"><i class="fa fa-edit me-2"></i> Ubah</a>
                             {{-- Delete user button is disabled if the user is currently logged in --}}

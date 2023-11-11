@@ -23,10 +23,12 @@
                     <div class="sb-nav-link-icon"><i class="fa fa-bar-chart fa-fw"></i></div>
                     Hasil
                 </a>
+                @if(auth()->user()->hasRole('admin'))
                 <a class="nav-link {{ Route::is('user.*') ? 'active' : '' }}" href="{{ route('user.index') }}">
                     <div class="sb-nav-link-icon"><i class="fa fa-users fa-fw"></i></div>
                     Pengguna
                 </a>
+                @endif
             </div>
         </div>
     </nav>

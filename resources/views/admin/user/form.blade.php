@@ -46,6 +46,20 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Role</label>
+                            <select name="role" class="form-control">
+                                <option value="admin" {{ old('role', $user->role) == 'admin' ? 'selected' : '' }}>Admin</option>
+                                @if($is_add)
+                                    <option value="user" {{ old('role') != 'admin' ? 'selected' : '' }}>User</option>
+                                @else
+                                    <option value="user" {{ old('role', $user->role) == 'user' ? 'selected' : '' }}>User</option>
+                                @endif
+                            </select>
+                            @error('name')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                        </div>
                         <a href="{{ route('user.index') }}" class="btn btn-outline-secondary"><i class="fa fa-arrow-left me-2"></i> Kembali</a>
                         <button type="submit" class="btn btn-primary"><i class="fa fa-save me-2"></i> Simpan</button>
                     </form>

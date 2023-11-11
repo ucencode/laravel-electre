@@ -42,10 +42,12 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
+            'role' => 'required|in:admin,user',
         ], [] ,[
             'name' => 'Nama',
             'email' => 'Email',
             'password' => 'Kata Sandi',
+            'role' => 'Role'
         ]);
 
         // encrypt password
@@ -92,10 +94,12 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id, // ignore this email for this user
             'password' => 'nullable|min:6',
+            'role' => 'required|in:admin,user',
         ], [] ,[
             'name' => 'Nama',
             'email' => 'Email',
             'password' => 'Kata Sandi',
+            'role' => 'Role',
         ]);
 
         // encrypt password

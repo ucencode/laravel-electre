@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -45,5 +46,10 @@ class User extends Authenticatable
     public function isCurrentlyLoggedIn()
     {
         return $this->id === auth()->user()->id;
+    }
+
+    public function hasRole($role)
+    {
+        return $this->role == $role;
     }
 }
