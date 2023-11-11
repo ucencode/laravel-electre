@@ -44,7 +44,7 @@ class CriteriaController extends Controller
 
         // validate request
         $criteria_data = $request->validate([
-            'code' => 'required|regex:/^C[0-9]{3}$/|unique:criterias,code',
+            'code' => 'required|regex:/^C[0-9]+$/|unique:criterias,code',
             'name' => 'required',
             'weight' => 'required|numeric|min:0|max:5',
         ], [

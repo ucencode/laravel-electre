@@ -22,14 +22,14 @@ class Alternative extends Model
     public function getGeneratedCode()
     {
         if (!$this->latest()->first()) {
-            // jika belum ada data, maka set code menjadi A001
-            $code = 'A001';
+            // jika belum ada data, maka set code menjadi A1
+            $code = 'A1';
         } else {
             // ambil latest code, lalu tambahkan 1
-            $latestCode = $this->latest()->first()->code;
+            $latestCode = Alternative::orderBy('code', 'desc')->first()->code;
             $latestCode = substr($latestCode, 1);
             $latestCode = $latestCode + 1;
-            $code = 'A' . str_pad($latestCode, 3, '0', STR_PAD_LEFT);
+            $code = 'A' . $latestCode;
         }
         return $code;
     }

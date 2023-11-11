@@ -40,7 +40,7 @@ class AlternativeController extends Controller
     {
         $alternative_data = $request->validate([
             'name' => 'required',
-            'code' => 'required|regex:/^A[0-9]{3}$/|unique:alternatives,code',
+            'code' => 'required|regex:/^A[0-9]+$/|unique:alternatives,code',
         ], [
             'code.regex' => 'Format kode salah',
         ] ,[
