@@ -20,6 +20,10 @@ class AuthController extends Controller
             'name' => ['required', 'max:255'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'min:6', 'confirmed']
+        ], [], [
+            'name' => 'Nama',
+            'email' => 'Email',
+            'password' => 'Kata Sandi'
         ]);
 
         // Store the user
@@ -43,6 +47,9 @@ class AuthController extends Controller
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required']
+        ], [], [
+            'email' => 'Email',
+            'password' => 'Kata Sandi'
         ]);
         // Attempt to log the user in
         if (Auth::attempt($credentials)) {

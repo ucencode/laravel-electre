@@ -30,12 +30,12 @@
                         </div>
                         <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                             {{-- <a class="small" href="#">Forgot Password?</a> --}}
-                            <button class="btn btn-primary w-100 btn-lg" type="submit">Login</button>
+                            <button class="btn btn-pink w-100 btn-lg" type="submit">Masuk</button>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer text-center py-3">
-                    <div class="small"><a href="{{ route('register') }}">Tidak ada akun? Buat baru disini</a></div>
+                    <div class="small"><a class="link-pink" href="{{ route('register') }}">Tidak ada akun? Buat baru disini</a></div>
                 </div>
             </div>
         </div>

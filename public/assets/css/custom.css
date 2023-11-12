@@ -15,8 +15,86 @@
     color: var(--bs-danger);
 }
 
-.bg-pink-300 {
-    background-color: #ff607e;
+.btn:disabled,
+.btn.disabled {
+    cursor: not-allowed!important;
+    opacity: 0.5;
+}
+
+/* CUSTOM ALERT */
+.alert {
+    border-radius: 0!important;
+}
+.alert-pastel-green {
+    background-color: #d5f5e3!important;
+    border-color: #d5f5e3!important;
+    color: #317144!important;
+}
+
+.alert-pastel-red {
+    background-color: #f8d7da!important;
+    border-color: #f8d7da!important;
+    color: #721c24!important;
+}
+
+/* CUSTOM BUTTON */
+.btn-pink {
+    background-color: #FF8C94!important;
+    border-color: #FF8C94!important;
+    color: #fff!important;
+}
+.btn-pink:hover {
+    background-color: #f97f86!important;
+    border-color: #f97f86!important;
+    color: #fff!important;
+}
+
+.btn-outline-pink {
+    color: #FF8C94!important;
+    background-color: transparent!important;
+    background-image: none!important;
+    border-color: #FF8C94!important;
+}
+.btn-outline-pink:hover {
+    color: #fff!important;
+    background-color: #FF8C94!important;
+    border-color: #FF8C94!important;
+}
+
+.btn-pastel-red {
+    background-color: #ff607e!important;
+    border-color: #ff607e!important;
+    color: #fff!important;
+}
+.btn-pastel-red:hover {
+    background-color: #f97f86!important;
+    border-color: #f97f86!important;
+    color: #fff!important;
+}
+
+/* CUSTOM CARD */
+.card {
+    border: 1px solid #FFB6B9;
+    border-radius: 0!important;
+}
+
+.card-header {
+    background-color: #FFB6B9;
+    border: none!important;
+    border-radius: 0!important;
+}
+
+/* CUSTOM COLOR */
+.badge-pink {
+    background-color: #FFB6B9;
+}
+
+.bg-cream {
+    background-color: #FAE3D9!important;
+}
+
+.bg-pink-100 {
+    background-color: #FCEEF5!important;
 }
 
 .bg-pink-200 {
@@ -27,8 +105,8 @@
     background-color: #fda9ac!important;
 }
 
-.bg-pink-100 {
-    background-color: #FCEEF5!important;
+.bg-pink-300 {
+    background-color: #ff607e!important;
 }
 
 .text-brown {
@@ -42,4 +120,18 @@
 .active .text-brown,
 .active.text-brown {
     color: #292524!important;
+}
+
+/* CUSTOM LINK */
+.link-pink {
+    color: #FF8C94!important;
+}
+.link-pink:hover {
+    color: #f97f86!important;
+}
+
+/* CUSTOM FORM */
+input:focus {
+    border-color: #FF8C94!important;
+    box-shadow: 0 0 0 0.25rem rgba(255, 140, 148, 0.25)!important;
 }

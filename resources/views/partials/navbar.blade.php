@@ -1,6 +1,6 @@
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-pink-200">
     <!-- Navbar Brand-->
-    <a class="navbar-brand ps-3 text-darkbrown" href="#">SPK Electre</a>
+    <a class="navbar-brand ps-3 text-darkbrown fw-semibold" href="#">SPK Electre</a>
     <!-- Sidebar Toggle-->
     <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
             class="fa fa-bars text-brown"></i></button>

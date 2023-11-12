@@ -3,14 +3,14 @@
 @section('title', 'Dashboard')
 
 @section('content')
-<div class="container-fluid px-4">
+<div class="container-fluid px-4 mb-4">
     <h1 class="mt-4 mb-3">Dashboard</h1>
     @include('partials.flash')
     <div class="page-content">
         <section class="row">
             <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
+                <div class="card border-0 rounded-0">
+                    <div class="card-header bg-pink-200 border-0 rounded-0">
                         <h5>Sistem Pendukung Keputusan Pemilihan Prioritas Pengembangan Layanan Pada Perusahaan Pitcar Service Menggunakan Metode ELECTRE (Elimination and Choice Translation Realite)</h5>
                     </div>
                     <div class="card-content">

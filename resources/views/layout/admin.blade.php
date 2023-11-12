@@ -10,8 +10,8 @@
     @include('partials.navbar')
     <div id="layoutSidenav">
         @include('partials.sidebar')
-        <div id="layoutSidenav_content">
-            <main class="bg-pink-100">
+        <div id="layoutSidenav_content" class="bg-pink-100">
+            <main>
                 @yield('content')
             </main>
             @include('partials.footer')

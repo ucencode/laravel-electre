@@ -44,7 +44,7 @@
                                 <div class="form-floating mb-3 mb-md-0">
                                     <input class="form-control @error('password') is-invalid @enderror" id="inputPasswordConfirm" type="password"
                                         name="password_confirmation" placeholder="Confirm password" />
-                                    <label for="inputPasswordConfirm">Confirm Password</label>
+                                    <label for="inputPasswordConfirm">Konfirmasi Kata Sandi</label>
                                 </div>
                             </div>
                             @error('password')
@@ -55,13 +55,13 @@
                         </div>
                         <div class="mt-4 mb-0">
                             <div class="d-grid">
-                                <button class="btn btn-primary btn-block btn-lg" type="submit">Create Account</button>
+                                <button class="btn btn-pink btn-block btn-lg" type="submit">Buat Akun Baru</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer text-center py-3">
-                    <div class="small"><a href="{{ route('login') }}">Have an account? Go to login</a></div>
+                    <div class="small"><a href="{{ route('login') }}">Sudah ada akun? Masuk disini</a></div>
                 </div>
             </div>
         </div>

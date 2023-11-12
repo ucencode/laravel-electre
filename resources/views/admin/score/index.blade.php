@@ -36,7 +36,7 @@
                         </td>
                         @endforeach
                         <td>
-                            <a href="{{ route('score.create', ['alt_code' => $alternative->code]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit fa-fw"></i></a>
+                            <a href="{{ route('score.create', ['alt_code' => $alternative->code]) }}" class="btn btn-pink btn-sm"><i class="fa fa-edit fa-fw"></i></a>
                         </td>
                     </tr>
                 @empty

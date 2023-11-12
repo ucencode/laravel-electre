@@ -3,7 +3,7 @@
 @section('title', 'Hasil Akhir')
 
 @section('content')
-<div class="container-fluid px-4">
+<div class="container-fluid px-4 mb-4">
     <h1 class="mt-4 mb-3">Hasil Akhir</h1>
     @include('partials.flash')
     <div class="accordion" id="resultAccordion">

@@ -10,7 +10,7 @@
         <div class="card-header">
             <i class="fa fa-hand-o-right me-1"></i>
             Kriteria adalah standar atau faktor yang digunakan untuk mengevaluasi dan membandingkan alternatif.
-            <a href="{{ route('criteria.create') }}" class="btn btn-primary btn-sm float-end"><i class="fa fa-plus me-2"></i> Tambah</a>
+            <a href="{{ route('criteria.create') }}" class="btn btn-pink btn-sm float-end"><i class="fa fa-plus me-2"></i> Tambah</a>
         </div>
         <div class="card-body">
             <table class="table table-striped table-bordered">
@@ -29,11 +29,11 @@
                         <td>{{ $criteria->name }}</td>
                         <td>{{ str_replace('.', ',', $criteria->weight) }}</td>
                         <td>
-                            <a href="{{ route('criteria.edit', $criteria->id) }}" class="btn btn-primary btn-sm" title="Edit"><i class="fa fa-edit fa-fw"></i></a>
+                            <a href="{{ route('criteria.edit', $criteria->id) }}" class="btn btn-pink btn-sm" title="Edit"><i class="fa fa-edit fa-fw"></i></a>
                             <form action="{{ route('criteria.destroy', $criteria->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin akan menghapus data kriteria ini?')" title="Hapus"><i class="fa fa-trash fa-fw"></i></button>
+                                <button class="btn btn-pastel-red btn-sm" onclick="return confirm('Apakah Anda yakin akan menghapus data kriteria ini?')" title="Hapus"><i class="fa fa-trash fa-fw"></i></button>
                             </form>
                         </td>
                     </tr>
