@@ -16,7 +16,7 @@
             </h2>
             <div id="resultData" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th></th>
@@ -52,7 +52,7 @@
             </h2>
             <div id="resultMatriksR" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th></th>
@@ -88,7 +88,7 @@
             </h2>
             <div id="resultMatriksV" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th></th>
@@ -124,7 +124,7 @@
             </h2>
             <div id="resultConcordance" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th></th>
@@ -160,7 +160,7 @@
             </h2>
             <div id="resultDiscordance" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th></th>
@@ -196,7 +196,7 @@
             </h2>
             <div id="resultMatriksConcordance" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th></th>
@@ -232,7 +232,7 @@
             </h2>
             <div id="resultMatriksDiscordance" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th></th>
@@ -268,7 +268,7 @@
             </h2>
             <div id="resultMatriksDominanConcordance" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th></th>
@@ -304,7 +304,7 @@
             </h2>
             <div id="resultMatriksDominanDiscordance" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th></th>
@@ -340,7 +340,7 @@
             </h2>
             <div id="resultMatriksE" class="accordion-collapse collapse">
                 <div class="accordion-body">
-                    <table class="table table-bordered table-striped table-hover">
+                    <table class="table table-bordered table-hover">
                         <thead>
                             <tr>
                                 <th></th>
