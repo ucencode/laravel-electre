@@ -21,6 +21,8 @@ class ResultController extends Controller
             ])
             ->join('alternatives as a', 'a.code', '=', 's.alternative_code')
             ->join('criterias as c', 'c.code', '=', 's.criteria_code')
+            ->orderBy('s.alternative_code', 'asc')
+            ->orderBy('s.criteria_code', 'asc')
             ->get();
         $criterias = DB::table('criterias')->get();
         $alternatives = DB::table('alternatives')->get();

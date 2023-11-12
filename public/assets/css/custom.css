@@ -14,3 +14,32 @@
     content: "*";
     color: var(--bs-danger);
 }
+
+.bg-pink-300 {
+    background-color: #ff607e;
+}
+
+.bg-pink-200 {
+    background-color: #FFB6B9!important;
+}
+
+.bg-pink-200.active {
+    background-color: #fda9ac!important;
+}
+
+.bg-pink-100 {
+    background-color: #FCEEF5!important;
+}
+
+.text-brown {
+    color: #78716c!important;
+}
+
+.text-darkbrown {
+    color: #292524!important;
+}
+
+.active .text-brown,
+.active.text-brown {
+    color: #292524!important;
+}

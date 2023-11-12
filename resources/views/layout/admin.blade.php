@@ -11,7 +11,7 @@
     <div id="layoutSidenav">
         @include('partials.sidebar')
         <div id="layoutSidenav_content">
-            <main>
+            <main class="bg-pink-100">
                 @yield('content')
             </main>
             @include('partials.footer')
