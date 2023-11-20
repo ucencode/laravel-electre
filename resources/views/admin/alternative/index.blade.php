@@ -9,7 +9,7 @@
     <div class="card mb-4">
         <div class="card-header">
             <i class="fa fa-hand-o-right me-1"></i>
-            Alternatif merujuk pada pilihan atau opsi yang tersedia untuk dipertimbangkan dalam proses pengambilan keputusan.
+            Alternatif merujuk pada opsi yang tersedia untuk dipertimbangkan dalam proses pengambilan keputusan.
             <a href="{{ route('alternative.create') }}" class="btn btn-pink btn-sm float-end"><i class="fa fa-plus me-2"></i> Tambah</a>
         </div>
         <div class="card-body">
@@ -18,7 +18,7 @@
                     <tr>
                         <th>Kode</th>
                         <th>Nama Alternatif</th>
-                        <th class="col-buttons"></th>
+                        <th class="col-buttons">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>

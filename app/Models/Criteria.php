@@ -23,7 +23,7 @@ class Criteria extends Model
     public function getGeneratedCode()
     {
         if (!$this->latest()->first()) {
-            // jika belum ada data, maka set code menjadi C001
+            // jika belum ada data, maka set code menjadi C1
             $code = 'C1';
         } else {
             // ambil latest code, lalu tambahkan 1

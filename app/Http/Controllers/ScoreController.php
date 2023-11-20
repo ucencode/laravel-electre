@@ -105,9 +105,11 @@ class ScoreController extends Controller
      */
     public function edit($id)
     {
+        /**
         $data['is_add'] = false;
         $data['score'] = Score::findOrFail($id);
         return view('admin.score.form', $data);
+         */
     }
 
     /**

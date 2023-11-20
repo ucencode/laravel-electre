@@ -5,10 +5,10 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-lg-7">
+        <div class="col-lg-5">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header">
-                    <h3 class="text-center font-weight-light my-4">Membuat Akun Baru</h3>
+                    <h3 class="text-center font-weight-light my-3">Aplikasi Sistem Pendukung Keputusan Metode Electre</h3>
                 </div>
                 <div class="card-body">
                     @include('partials.flash')
@@ -61,7 +61,7 @@
                     </form>
                 </div>
                 <div class="card-footer text-center py-3">
-                    <div class="small"><a href="{{ route('login') }}">Sudah ada akun? Masuk disini</a></div>
+                    <div class="small"><a href="{{ route('login') }}">Sudah punya akun? Masuk disini</a></div>
                 </div>
             </div>
         </div>
