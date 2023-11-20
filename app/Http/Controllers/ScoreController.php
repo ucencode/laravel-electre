@@ -21,11 +21,31 @@ class ScoreController extends Controller
         $alternatives = Alternative::orderBy('code')->get();
         $criterias = Criteria::orderBy('code')->get();
         $data_skor = Score::all();
+
         $scores = [];
-        foreach ($data_skor as $skor) {
+        foreach ($data_skor as $skor)
             $scores[$skor->alternative_code][$skor->criteria_code] = $skor->value;
+
+        $data['scores'] = $scores;
+        $data['alternatives'] = $alternatives;
+        $data['criterias'] = $criterias;
+
+        // empty data check
+        if ($alternatives->isEmpty() || $criterias->isEmpty()) {
+            $warningMessage = '';
+
+            if ($alternatives->isEmpty() && $criterias->isEmpty())
+                $warningMessage = 'Data kriteria dan alternatif tidak boleh kosong';
+            else if ($alternatives->isEmpty())
+                $warningMessage = 'Data alternatif tidak boleh kosong';
+            else if ($criterias->isEmpty())
+                $warningMessage = 'Data kriteria tidak boleh kosong';
+
+            return view('admin.score.index', $data)->with('warning', $warningMessage);
         }
-        return view('admin.score.index', ['scores' => $scores, 'alternatives' => $alternatives, 'criterias' => $criterias]);
+
+        // there's all fine
+        return view('admin.score.index', $data);
     }
 
     /**

@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Calc\Electre;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\DB;
 
 class ResultController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $scores = DB::table('scores', 's')
             ->select([
@@ -29,19 +30,31 @@ class ResultController extends Controller
 
         $weights = $criterias->pluck('weight', 'code')->toArray();
 
-        $data = [];
-
-        foreach ($scores as $score) {
-            $data[$score->alternative_code][$score->criteria_code] = $score->value;
+        if ($criterias->isEmpty() && $alternatives->isEmpty()) {
+            // jika kriteria dan alternatif kosong
+            return view('admin.result.index')->with('warning', 'Data kriteria dan alternatif tidak boleh kosong');
+        } elseif ($criterias->isEmpty()) {
+            // jika kriteria kosong
+            return view('admin.result.index')->with('warning', 'Data kriteria tidak boleh kosong');
+        } elseif ($alternatives->isEmpty()) {
+            // jika alternatif kosong
+            return view('admin.result.index')->with('warning', 'Data alternatif tidak boleh kosong');
+        } elseif ($scores->isEmpty()) {
+            // jika skor kosong
+            return view('admin.result.index')->with('warning', 'Data skor tidak boleh kosong');
+        } elseif ($alternatives->count() < 2) {
+            // jika alternatif kurang dari 2
+            return view('admin.result.index')->with('warning', 'Data alternatif minimal 2');
         }
 
-        // dd($scores, $criterias, $alternatives, $weights);
+        $data_score = [];
+        foreach ($scores as $score) {
+            $data_score[$score->alternative_code][$score->criteria_code] = $score->value;
+        }
 
-        $data['electre'] = new Electre($data, $weights);
+        $data['electre'] = new Electre($data_score, $weights);
         $data['alternative'] = $alternatives->pluck('name', 'code')->toArray();
         $data['criteria'] = $criterias->pluck('name', 'code')->toArray();
-        // dd($data['alternative'], $data['criteria']);
-
         return view('admin.result.index', $data);
     }
 }

@@ -16,7 +16,7 @@ class Alternative extends Model
 
     public function scores()
     {
-        return $this->hasMany(Score::class, 'criteria_code', 'code');
+        return $this->hasMany(Score::class, 'alternative_code', 'code');
     }
 
     public function getGeneratedCode()

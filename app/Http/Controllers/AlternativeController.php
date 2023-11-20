@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alternative;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AlternativeController extends Controller
 {
@@ -106,9 +107,14 @@ class AlternativeController extends Controller
      */
     public function destroy($id)
     {
+        DB::beginTransaction();
+
         $alternative = Alternative::findOrFail($id);
         $name = $alternative->name;
+        $alternative->scores()->delete();
         $alternative->delete();
+
+        DB::commit();
         return redirect()->route('alternative.index')->with('success', 'Berhasil menghapus ' . $name);
     }
 }

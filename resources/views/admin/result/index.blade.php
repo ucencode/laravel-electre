@@ -6,6 +6,7 @@
 <div class="container-fluid px-4 mb-4">
     <h1 class="mt-4 mb-3">Hasil Akhir</h1>
     @include('partials.flash')
+    @if(!empty($electre))
     <div class="accordion" id="resultAccordion">
         <div class="accordion-item">
             <h2 class="accordion-header">
@@ -372,5 +373,6 @@
             </div>
         </div>
     </div>
+    @endif
 </div>
 @endsection

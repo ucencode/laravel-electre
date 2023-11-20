@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Criteria;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CriteriaController extends Controller
 {
@@ -120,7 +121,12 @@ class CriteriaController extends Controller
      */
     public function destroy($id)
     {
-        Criteria::findOrFail($id)->delete();
+        DB::beginTransaction();
+        $criteria = Criteria::findOrFail($id);
+        $criteria->scores()->delete();
+        $criteria->delete();
+
+        DB::commit();
         return redirect()->route('criteria.index')->with('success', 'Kriteria berhasil dihapus!');
     }
 }
