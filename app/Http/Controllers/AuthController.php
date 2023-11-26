@@ -31,9 +31,9 @@ class AuthController extends Controller
         $validatedData['email_verified_at'] = now();
         $user = User::create($validatedData);
         // Sign the user in
-        Auth::login($user);
+        //Auth::login($user);
         // Redirect to dashboard
-        return redirect()->route('dashboard')->with('success', 'Anda berhasil mendaftar! Selamat datang di aplikasi.');
+        return redirect()->route('login')->with('success', 'Anda berhasil mendaftar! Silahkan login untuk masuk ke dalam aplikasi.');
     }
 
     public function login()

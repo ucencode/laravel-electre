@@ -7,8 +7,8 @@
     <h1 class="mt-4 mb-3">Kriteria</h1>
     @include('partials.flash')
     <div class="card mb-4">
-        <div class="card-header">
-            <i class="fa fa-table me-1"></i>
+        <div class="card-header text-white">
+            <i class="fa fa-edit me-1"></i>
             @if($is_add)
                 Tambah Kriteria Baru
             @else

@@ -10,7 +10,7 @@
     @include('partials.navbar')
     <div id="layoutSidenav">
         @include('partials.sidebar')
-        <div id="layoutSidenav_content" class="bg-pink-100">
+        <div id="layoutSidenav_content" class="bg-pink-200">
             <main>
                 @yield('content')
             </main>

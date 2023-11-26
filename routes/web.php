@@ -7,6 +7,7 @@ use App\Http\Controllers\CriteriaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\ResultController;
+use App\Http\Controllers\TutorialController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,7 @@ Route::get('/welcome', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/tutorial', [TutorialController::class, 'index'])->name('tutorial');
 
     // https://laravel.com/docs/8.x/controllers#actions-handled-by-resource-controller
     Route::resource('user', UserController::class)->except(['show']);

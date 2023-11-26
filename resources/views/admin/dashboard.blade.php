@@ -10,7 +10,7 @@
         <section class="row">
             <div class="col-12">
                 <div class="card border-0 rounded-0">
-                    <div class="card-header bg-pink-200 border-0 rounded-0">
+                    <div class="card-header bg-red-200 text-white border-0 rounded-0">
                         <h5>Sistem Pendukung Keputusan Pemilihan Prioritas Pengembangan Layanan Pada Perusahaan Pitcar Service Menggunakan Metode ELECTRE (Elimination and Choice Translation Realite)</h5>
                     </div>
                     <div class="card-content">

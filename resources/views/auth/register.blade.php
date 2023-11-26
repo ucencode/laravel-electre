@@ -12,6 +12,7 @@
                 </div>
                 <div class="card-body">
                     @include('partials.flash')
+                    <h6 class="text-center font-weight-light">Silahkan registrasi terlebih dahulu...</h6>
                     <form method="post" action="{{ route('register') }}">
                     @csrf
                         <div class="row mb-3">

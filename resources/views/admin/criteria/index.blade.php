@@ -7,10 +7,9 @@
     <h1 class="mt-4 mb-3">Kriteria</h1>
     @include('partials.flash')
     <div class="card mb-4">
-        <div class="card-header">
-            <i class="fa fa-hand-o-right me-1"></i>
+        <div class="card-header text-white">
             Kriteria adalah standar atau faktor yang digunakan untuk mengevaluasi dan membandingkan alternatif.
-            <a href="{{ route('criteria.create') }}" class="btn btn-pink btn-sm float-end"><i class="fa fa-plus me-2"></i> Tambah</a>
+            <a href="{{ route('criteria.create') }}" class="btn btn-grey btn-sm float-end"><i class="fa fa-plus me-2"></i> Tambah</a>
         </div>
         <div class="card-body">
             <table class="table table-striped table-bordered">
@@ -19,7 +18,7 @@
                         <th>Kode</th>
                         <th>Nama Kriteria</th>
                         <th>Bobot</th>
-                        <th class="col-buttons"></th>
+                        <th class="col-buttons">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -29,7 +28,7 @@
                         <td>{{ $criteria->name }}</td>
                         <td>{{ str_replace('.', ',', $criteria->weight) }}</td>
                         <td>
-                            <a href="{{ route('criteria.edit', $criteria->id) }}" class="btn btn-pink btn-sm" title="Edit"><i class="fa fa-edit fa-fw"></i></a>
+                            <a href="{{ route('criteria.edit', $criteria->id) }}" class="btn btn-yellow btn-sm" title="Edit"><i class="fa fa-edit fa-fw"></i></a>
                             <form action="{{ route('criteria.destroy', $criteria->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')

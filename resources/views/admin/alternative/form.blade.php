@@ -7,8 +7,8 @@
     <h1 class="mt-4 mb-3">Alternatif</h1>
     @include('partials.flash')
     <div class="card mb-4">
-        <div class="card-header">
-            <i class="fa fa-table me-1"></i>
+        <div class="card-header text-white">
+            <i class="fa fa-edit me-1"></i>
             @if($is_add)
                 Tambah Alternatif Baru
             @else
@@ -43,8 +43,8 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        <a href="{{ route('alternative.index') }}" class="btn btn-outline-pink"><i class="fa fa-arrow-left me-2"></i> Kembali</a>
-                        <button type="submit" class="btn btn-pink"><i class="fa fa-save me-2"></i> Simpan</button>
+                        <a href="{{ route('alternative.index') }}" class="btn btn-outline-secondary"><i class="fa fa-arrow-left me-2"></i> Kembali</a>
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-save me-2"></i> Simpan</button>
                     </form>
                 </div>
             </div>

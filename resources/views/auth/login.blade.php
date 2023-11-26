@@ -12,6 +12,7 @@
                 </div>
                 <div class="card-body">
                     @include('partials.flash')
+                    <h6 class="text-center font-weight-light">Silahkan login untuk masuk ke dalam aplikasi...</h6>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-floating mb-3">

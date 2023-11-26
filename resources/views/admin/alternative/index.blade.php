@@ -7,10 +7,9 @@
     <h1 class="mt-4 mb-3">Alternatif</h1>
     @include('partials.flash')
     <div class="card mb-4">
-        <div class="card-header">
-            <i class="fa fa-hand-o-right me-1"></i>
+        <div class="card-header text-white">
             Alternatif merujuk pada opsi yang tersedia untuk dipertimbangkan dalam proses pengambilan keputusan.
-            <a href="{{ route('alternative.create') }}" class="btn btn-pink btn-sm float-end"><i class="fa fa-plus me-2"></i> Tambah</a>
+            <a href="{{ route('alternative.create') }}" class="btn btn-grey btn-sm float-end"><i class="fa fa-plus me-2"></i> Tambah</a>
         </div>
         <div class="card-body">
             <table class="table table-striped table-bordered">
@@ -27,7 +26,7 @@
                         <td>{{ $alternative->code }}</td>
                         <td>{{ $alternative->name }}</td>
                         <td>
-                            <a href="{{ route('alternative.edit', $alternative->id) }}" class="btn btn-pink btn-sm" title="Edit"><i class="fa fa-edit fa-fw"></i></a>
+                            <a href="{{ route('alternative.edit', $alternative->id) }}" class="btn btn-yellow btn-sm" title="Edit"><i class="fa fa-edit fa-fw"></i></a>
                             <form action="{{ route('alternative.destroy', $alternative->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')

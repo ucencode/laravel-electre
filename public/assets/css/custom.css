@@ -23,22 +23,22 @@
 
 /* CUSTOM ACCORDION */
 .accordion {
-    border: 1px solid #FFB6B9;
+    border: 1px solid #2B2B2B;
     border-radius: 0!important;
 }
 
 .accordion .accordion-item {
-    border-bottom: 1px solid #FFB6B9;
+    border-bottom: 1px solid #2B2B2B;
     border-radius: 0!important;
 }
 
 .accordion-button:focus {
-    border-color: #FFB6B9!important;
+    border-color: #2B2B2B!important;
     box-shadow: 0 0 0 0.25rem rgba(255, 182, 185, 0.25)!important;
 }
 
 .accordion-button:not(.collapsed) {
-    background-color: #FFB6B9!important;
+    background-color: #2B2B2B!important;
     color: #fff!important;
 }
 
@@ -71,11 +71,24 @@
 }
 
 /* CUSTOM BUTTON */
-.btn-pink {
-    background-color: #FF8C94!important;
-    border-color: #FF8C94!important;
+.btn-yellow {
+    background-color: #FFC993!important;
+    border-color: #FFC993!important;
     color: #fff!important;
 }
+
+.btn-grey {
+    background-color: #2B2B2B!important;
+    border-color: #2B2B2B!important;
+    color: #fff!important;
+}
+
+.btn-delete {
+    background-color: #de6365!important;
+    border-color: #de6365!important;
+    color: #fff!important;
+}
+
 .btn-pink:hover {
     background-color: #f97f86!important;
     border-color: #f97f86!important;
@@ -95,8 +108,8 @@
 }
 
 .btn-pastel-red {
-    background-color: #ff607e!important;
-    border-color: #ff607e!important;
+    background-color: #de6365!important;
+    border-color: #de6365!important;
     color: #fff!important;
 }
 .btn-pastel-red:hover {
@@ -112,7 +125,7 @@
 }
 
 .card-header {
-    background-color: #FFB6B9;
+    background-color: #B60203!important;
     border: none!important;
     border-radius: 0!important;
 }
@@ -120,6 +133,10 @@
 /* CUSTOM COLOR */
 .badge-pink {
     background-color: #FFB6B9;
+}
+
+.bg-white {
+    color: #fbfbfb;
 }
 
 .bg-cream {
@@ -130,8 +147,20 @@
     background-color: #FCEEF5!important;
 }
 
-.bg-pink-200 {
-    background-color: #FFB6B9!important;
+.bg-grey-layout {
+    color: #f1f1f1;
+}
+
+.bg-grey-100 {
+    background-color: #c8c8c8;
+}
+
+.bg-grey-200 {
+    background-color: #2B2B2B!important;
+}
+
+.bg-red-200 {
+    background-color: #B60203!important;
 }
 
 .bg-pink-200.active {
@@ -148,6 +177,10 @@
 
 .text-darkbrown {
     color: #292524!important;
+}
+
+.text-white {
+    color: #fffefb;
 }
 
 .active .text-brown,

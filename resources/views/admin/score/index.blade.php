@@ -7,8 +7,7 @@
     <h1 class="mt-4 mb-3">Nilai Alternatif</h1>
     @include('partials.flash')
     <div class="card mb-4">
-        <div class="card-header">
-            <i class="fa fa-hand-o-right me-1"></i>
+        <div class="card-header text-white">
             Pengisian nilai alternatif pada setiap kriteria yang telah ditetapkan.
         </div>
         <div class="card-body">
@@ -19,7 +18,7 @@
                         @foreach($criterias as $criteria)
                         <th title="{{ $criteria->name }}" data-bs-toggle="tooltip" data-bs-title="{{ $criteria->name }} ({{ str_replace('.', ',', $criteria->weight) }})">{{ $criteria->code }}</th>
                         @endforeach
-                        <th class="col-buttons"></th>
+                        <th class="col-buttons">Input Nilai</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,7 +35,7 @@
                         </td>
                         @endforeach
                         <td>
-                            <a href="{{ route('score.create', ['alt_code' => $alternative->code]) }}" class="btn btn-pink btn-sm"><i class="fa fa-edit fa-fw"></i></a>
+                            <a href="{{ route('score.create', ['alt_code' => $alternative->code]) }}" class="btn btn-yellow btn-sm"><i class="fa fa-edit fa-fw"></i></a>
                         </td>
                     </tr>
                 @empty
