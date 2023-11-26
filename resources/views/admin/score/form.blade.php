@@ -29,7 +29,7 @@
                         </div>
                         @endforeach
                         <a href="{{ route('score.index') }}" class="btn btn-outline-pink"><i class="fa fa-arrow-left me-2"></i> Kembali</a>
-                        <button type="submit" class="btn btn-pink"><i class="fa fa-save me-2"></i> Simpan</button>
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-save me-2"></i> Simpan</button>
                     </form>
                 </div>
             </div>

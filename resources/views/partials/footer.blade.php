@@ -1,4 +1,4 @@
-<footer class="py-3 bg-light mt-auto">
+<footer class="py-3 bg-light mt-auto border-top">
     <div class="container-fluid px-4">
         <div class="d-flex align-items-center justify-content-between small">
             <div class="text-muted">Copyright &copy; {{ Config::get('name') }} 2023</div>

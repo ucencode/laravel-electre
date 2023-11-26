@@ -56,13 +56,13 @@
                         </div>
                         <div class="mt-4 mb-0">
                             <div class="d-grid">
-                                <button class="btn btn-pink btn-block btn-lg" type="submit">Buat Akun Baru</button>
+                                <button class="btn btn-danger btn-block btn-lg" type="submit">Buat Akun Baru</button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer text-center py-3">
-                    <div class="small"><a href="{{ route('login') }}">Sudah punya akun? Masuk disini</a></div>
+                    <div class="small"><a class="text-danger" href="{{ route('login') }}">Sudah punya akun? Masuk disini</a></div>
                 </div>
             </div>
         </div>

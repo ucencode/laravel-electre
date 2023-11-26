@@ -336,7 +336,7 @@
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#resultMatriksE" aria-expanded="false" aria-controls="resultMatriksE">
-                    Agregate dominance Matriks E
+                    Agregate Dominance Matriks E
                 </button>
             </h2>
             <div id="resultMatriksE" class="accordion-collapse collapse">

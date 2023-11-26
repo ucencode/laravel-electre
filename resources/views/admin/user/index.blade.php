@@ -18,7 +18,7 @@
                         <th>Nama</th>
                         <th>Email</th>
                         <th>Role</th>
-                        <th>Aksi</th>
+                        <th class="col-buttons">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,15 +28,15 @@
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->role }}</td>
                         <td>
-                            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-yellow btn-sm" title="test"><i class="fa fa-edit me-2"></i> Ubah</a>
+                            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-yellow btn-sm" title="test"><i class="fa fa-edit fa-fw"></i></a>
                             {{-- Delete user button is disabled if the user is currently logged in --}}
                             @if ($user->id == Auth::user()->id)
-                                <span class="btn btn-pastel-red btn-sm disabled" onclick="alert('Tidak bisa menghapus user yg dipakai untuk saat ini')"><i class="fa fa-trash me-2"></i> Hapus</span>
+                                <span class="btn btn-pastel-red btn-sm disabled" onclick="alert('Tidak bisa menghapus user yg dipakai untuk saat ini')"><i class="fa fa-trash fa-fw"></i></span>
                             @else
                             <form action="{{ route('user.destroy', $user->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                    <button class="btn btn-pastel-red btn-sm" onclick="return confirm('Apakah anda yakin akan menghapus user ini?')"><i class="fa fa-trash me-2"></i> Hapus</button>
+                                    <button class="btn btn-pastel-red btn-sm" onclick="return confirm('Apakah anda yakin akan menghapus user ini?')"><i class="fa fa-trash fa-fw"></i></button>
                             </form>
                             @endif
                         </td>

@@ -7,7 +7,7 @@
     <h1 class="mt-4 mb-3">Alternatif</h1>
     @include('partials.flash')
     <div class="card mb-4">
-        <div class="card-header text-white">
+        <div class="card-header text-white bg-danger">
             Alternatif merujuk pada opsi yang tersedia untuk dipertimbangkan dalam proses pengambilan keputusan.
             <a href="{{ route('alternative.create') }}" class="btn btn-grey btn-sm float-end"><i class="fa fa-plus me-2"></i> Tambah</a>
         </div>
