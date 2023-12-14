@@ -127,6 +127,12 @@
     border-color: #de6365!important;
     color: #fff!important;
 }
+
+.btn-red {
+    background-color: #B60203!important;
+    border-color: #B60203!important;
+    color: #fff!important;
+}
 .btn-pastel-red:hover {
     background-color: #f97f86!important;
     border-color: #f97f86!important;

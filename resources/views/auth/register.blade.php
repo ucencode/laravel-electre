@@ -8,7 +8,7 @@
         <div class="col-lg-5">
             <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header">
-                    <h3 class="text-center font-weight-light my-3">Aplikasi Sistem Pendukung Keputusan Metode Electre</h3>
+                    <h3 class="text-center text-white font-weight-light my-3">Aplikasi Sistem Pendukung Keputusan Metode Electre</h3>
                 </div>
                 <div class="card-body">
                     @include('partials.flash')
@@ -56,7 +56,7 @@
                         </div>
                         <div class="mt-4 mb-0">
                             <div class="d-grid">
-                                <button class="btn btn-danger btn-block btn-lg" type="submit">Buat Akun Baru</button>
+                                <button class="btn btn-red btn-block btn-lg" type="submit">Buat Akun Baru</button>
                             </div>
                         </div>
                     </form>

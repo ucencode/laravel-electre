@@ -40,8 +40,8 @@ class ResultController extends Controller
             // jika alternatif kosong
             return view('admin.result.index')->with('warning', 'Data alternatif tidak boleh kosong');
         } elseif ($scores->isEmpty()) {
-            // jika skor kosong
-            return view('admin.result.index')->with('warning', 'Data skor tidak boleh kosong');
+            // jika nilai kosong
+            return view('admin.result.index')->with('warning', 'Data nilai tidak boleh kosong');
         } elseif ($alternatives->count() < 2) {
             // jika alternatif kurang dari 2
             return view('admin.result.index')->with('warning', 'Data alternatif minimal 2');
