@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Alternative;
 use App\Models\Criteria;
-use App\Models\Entity;
 use App\Models\Score;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ScoreController extends Controller
 {
@@ -74,7 +72,7 @@ class ScoreController extends Controller
     public function store(Request $request)
     {
         if ($request->has('criteria') && is_array($request->criteria)) {
-            // replace comma with dot
+            // replace comma with dot for decimal
             $arr_criteria = [];
             foreach ($request->criteria as $criteria_code => $value) {
                 $arr_criteria[$criteria_code] = str_replace(',', '.', $value);
@@ -101,7 +99,18 @@ class ScoreController extends Controller
             ];
         }
 
-        Score::upsert($update_values, ['alternative_code', 'criteria_code'], ['value']);
+        foreach ($update_values as $update_value) {
+            $score = Score::where('alternative_code', $update_value['alternative_code'])
+                ->where('criteria_code', $update_value['criteria_code'])
+                ->first();
+
+            if ($score) {
+                $score->value = $update_value['value'];
+                $score->save();
+            } else {
+                Score::create($update_value);
+            }
+        }
 
         return redirect()->route('score.index')->with('success', 'Data skor berhasil disimpan');
     }
@@ -125,11 +134,11 @@ class ScoreController extends Controller
      */
     public function edit($id)
     {
-        /**
+        /*
         $data['is_add'] = false;
         $data['score'] = Score::findOrFail($id);
         return view('admin.score.form', $data);
-         */
+        */
     }
 
     /**
