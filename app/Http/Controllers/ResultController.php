@@ -52,13 +52,16 @@ class ResultController extends Controller
             $data_score[$score->alternative_code][$score->criteria_code] = $score->value;
         }
 
-        $data['electre'] = new Electre($data_score, $weights);
-        $data['alternative'] = $alternatives->pluck('name', 'code')->toArray();
-        $data['criteria'] = $criterias->pluck('name', 'code')->toArray();
-        if($request->get('dump'))
-        {
-            dd($data['electre']);
+        try {
+            $data['electre'] = new Electre($data_score, $weights);
+            $data['alternative'] = $alternatives->pluck('name', 'code')->toArray();
+            $data['criteria'] = $criterias->pluck('name', 'code')->toArray();
+            if($request->get('dump'))
+                dd($data['electre']);
+
+            return view('admin.result.index', $data);
+        } catch (\DivisionByZeroError $e) {
+            return view('admin.result.index')->with('warning', 'Data nilai tidak boleh kosong');
         }
-        return view('admin.result.index', $data);
     }
 }
