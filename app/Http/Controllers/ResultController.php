@@ -55,6 +55,10 @@ class ResultController extends Controller
         $data['electre'] = new Electre($data_score, $weights);
         $data['alternative'] = $alternatives->pluck('name', 'code')->toArray();
         $data['criteria'] = $criterias->pluck('name', 'code')->toArray();
+        if($request->get('dump'))
+        {
+            dd($data['electre']);
+        }
         return view('admin.result.index', $data);
     }
 }

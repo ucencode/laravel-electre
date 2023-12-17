@@ -258,8 +258,8 @@ class Electre extends Controller
      * @return void
      */
     function get_rank(){
-        $data = $this->aggregatedMatrix;
-        krsort($data);
+        $data = $this->total;
+        arsort($data);
         $no=1;
         $new = array();
         foreach($data as $key => $value){
